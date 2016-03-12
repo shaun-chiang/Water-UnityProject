@@ -61,8 +61,25 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>Assets\Plugins\WebSocket\websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Photon3Unity3D">
+      <HintPath>Assets\Plugins\Photon3Unity3D.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatChannel.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatClient.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatDisconnectCause.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatEventCode.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatOperationCode.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatParameterCode.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatPeer.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatState.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\ChatUserStatus.cs" />
+    <Compile Include="Assets\Plugins\PhotonChatApi\IChatClientListener.cs" />
+    <Compile Include="Assets\Plugins\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\ButtonHandler.cs" />
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs" />
@@ -76,6 +93,10 @@
     <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Photon Unity Networking\changelog.txt" />
+    <None Include="Assets\Photon Unity Networking\readme.txt" />
+    <None Include="Assets\Plugins\Photon3Unity3D.xml" />
+    <None Include="Assets\Plugins\release_history.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

@@ -19,8 +19,10 @@ public class PlayerController : MonoBehaviour {
         if (isShooting)
         {
             WeaponScript ws = GetComponent<WeaponScript>();
+            Debug.Log("shot invoked");
             if (ws != null)
             {
+                Debug.Log("Go!");
                 ws.Attack();
             }
         }
