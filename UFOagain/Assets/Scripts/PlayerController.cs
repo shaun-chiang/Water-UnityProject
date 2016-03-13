@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.CrossPlatformInput;
+using Photon;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : PunBehaviour {
     Rigidbody2D rb;
     public float speed;
     //public Rigidbody2D laserShotInstance;
@@ -15,15 +16,18 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        bool isShooting = CrossPlatformInputManager.GetButton("Shoot");
-        if (isShooting)
+        if (PhotonView.Get(this).isMine)
         {
-            WeaponScript ws = GetComponent<WeaponScript>();
-            Debug.Log("shot invoked");
-            if (ws != null)
+            bool isShooting = CrossPlatformInputManager.GetButton("Shoot");
+            if (isShooting)
             {
-                Debug.Log("Go!");
-                ws.Attack();
+                WeaponScript ws = GetComponent<WeaponScript>();
+                Debug.Log("shot invoked");
+                if (ws != null)
+                {
+                    Debug.Log("Go!");
+                    ws.Attack();
+                }
             }
         }
     }
@@ -31,23 +35,27 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        Vector3 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertical"));
-        rb.AddForce(moveVec * speed);
-
-
-        // mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Quaternion rot = Quaternion.LookRotation(moveVec, Vector3.forward);
-        if (moveVec.sqrMagnitude > 0.1f)
+        if (PhotonView.Get(this).isMine)
         {
-            transform.rotation = new Quaternion(0, 0, rot.z, rot.w);
-            //transform.eulerAngles.Set(0, 0, transform.eulerAngles.z);
-            rb.angularVelocity = 0;
-        }
-        
+            Vector3 moveVec = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertical"));
+            rb.AddForce(moveVec * speed);
 
-        //float input = Input.GetAxis("Vertical");
-        //Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
-        //rb.AddForce(movement * speed);
-        //transform.position += movement * speed;
+
+            // mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Quaternion rot = Quaternion.LookRotation(moveVec, Vector3.forward);
+            if (moveVec.sqrMagnitude > 0.1f)
+            {
+                transform.rotation = new Quaternion(0, 0, rot.z, rot.w);
+                //transform.eulerAngles.Set(0, 0, transform.eulerAngles.z);
+                rb.angularVelocity = 0;
+            }
+
+
+
+            //float input = Input.GetAxis("Vertical");
+            //Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+            //rb.AddForce(movement * speed);
+            //transform.position += movement * speed;
+        }
     }
 }
