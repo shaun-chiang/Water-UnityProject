@@ -25,7 +25,6 @@ public class Shot : MonoBehaviour {
     void FixedUpdate()
     {
 
-        print("HHEKSF");
         rb.velocity = (transform.right * laserSpeed);
 
 
