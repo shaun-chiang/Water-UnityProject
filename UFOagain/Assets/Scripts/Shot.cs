@@ -13,7 +13,7 @@ public class Shot : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rb = this.GetComponent<Rigidbody2D>();
-        transform.Rotate(new Vector3(0, 0, -90));
+        //transform.Rotate(new Vector3(0, 0, -90));
         Destroy(gameObject, 3);
 	}
 	
@@ -25,6 +25,7 @@ public class Shot : MonoBehaviour {
     void FixedUpdate()
     {
 
+        print("HHEKSF");
         rb.velocity = (transform.right * laserSpeed);
 
 

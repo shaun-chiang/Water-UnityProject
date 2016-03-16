@@ -7,6 +7,7 @@ public class WeaponScript : MonoBehaviour {
 
     public float rof = 0.25f;
     private float cooldown;
+	public Vector3 offset = new Vector3 (0,0,1);
 
 	// Use this for initialization
 	void Start () {
@@ -28,7 +29,7 @@ public class WeaponScript : MonoBehaviour {
         if (canAttack())
         {
             cooldown = rof;
-            var laserShotInstance = Instantiate(laserShotPrefab, transform.position, transform.rotation) as Rigidbody2D;
+			var laserShotInstance = Instantiate(laserShotPrefab, transform.position + offset, transform.rotation) as Rigidbody2D;
             
             //laserShotInstance.velocity = transform.forward * 20;
 
