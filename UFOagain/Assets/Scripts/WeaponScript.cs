@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class WeaponScript : MonoBehaviour {
+public class WeaponScript : Photon.PunBehaviour {
 
     public Rigidbody2D laserShotPrefab;
+    public GameObject laserShotPrefab1;
 
-    public float rof = 0.25f;
+    public float rof = 1f;
     private float cooldown;
-	public Vector3 offset = new Vector3 (0,0,1);
 
 	// Use this for initialization
 	void Start () {
-
+        name = gameObject.name;
         cooldown = 0f;
 	
 	}
@@ -22,6 +23,8 @@ public class WeaponScript : MonoBehaviour {
         {
             cooldown -= Time.deltaTime;
         }
+
+        
 	}
 
     public void Attack()
@@ -29,16 +32,17 @@ public class WeaponScript : MonoBehaviour {
         if (canAttack())
         {
             cooldown = rof;
-			var laserShotInstance = Instantiate(laserShotPrefab, transform.position + offset, transform.rotation) as Rigidbody2D;
-            
-            //laserShotInstance.velocity = transform.forward * 20;
+            GetComponent<PhotonView>().RPC("shotActive", PhotonTargets.AllViaServer); 
+            //var laserShotInstance = Instantiate(laserShotPrefab, transform.position, transform.rotation) as Rigidbody2D;
+            //var laserShotInstance = PhotonNetwork.Instantiate(laserShotPrefab1.name, transform.position, transform.rotation, 0) as GameObject;
 
-           // LaserShotMove move = laserShotInstance.GetComponent<LaserShotMove>();
-          //  if (move != null)
-           // {
-            //    move.setDir(transform.forward);
-           // }
         }
+    }
+    [PunRPC]
+    public void shotActive()
+    {
+        var laserShotInstance = Instantiate(laserShotPrefab, transform.position, transform.rotation) as Rigidbody2D;
+        //var laserShotInstance = PhotonNetwork.Instantiate(laserShotPrefab1.name, transform.position, transform.rotation, 0) as GameObject;
     }
 
     public bool canAttack()

@@ -7,12 +7,21 @@ public class CameraFollowerScript : MonoBehaviour {
     private Vector3 offset;
 	// Use this for initialization
 	void Start () {
-        offset = transform.position - player.transform.position;
+       // player = GameObject.FindGameObjectWithTag("Player");
+        //offset = transform.position - player.transform.position;
 	}
 	
 	// Update is called once per frame
 	void LateUpdate () {
-        transform.position = player.transform.position + offset;
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            offset = transform.position - player.transform.position;
+        }
+        else {
+            transform.position = player.transform.position + offset;
+        }
+
 	}
 
 

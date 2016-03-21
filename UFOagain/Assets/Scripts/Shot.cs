@@ -8,12 +8,13 @@ public class Shot : MonoBehaviour {
     public int dmg;
     Vector3 dir;
     public bool isEnemy = false;
+    private int id = 0;
 
     Rigidbody2D rb;
 	// Use this for initialization
 	void Start () {
         rb = this.GetComponent<Rigidbody2D>();
-        //transform.Rotate(new Vector3(0, 0, -90));
+        transform.Rotate(new Vector3(0, 0, -90));
         Destroy(gameObject, 3);
 	}
 	
@@ -25,7 +26,6 @@ public class Shot : MonoBehaviour {
     void FixedUpdate()
     {
 
-        print("HHEKSF");
         rb.velocity = (transform.right * laserSpeed);
 
 
@@ -36,5 +36,9 @@ public class Shot : MonoBehaviour {
         Destroy(gameObject);
     }
 
+    public int getId()
+    {
+        return this.id;
+    }
 
 }

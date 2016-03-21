@@ -91,14 +91,38 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.EditorTestsRunner">
+      <HintPath>Library\UnityAssemblies\UnityEditor.EditorTestsRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\UnityAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TreeEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.TreeEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets\Photon Unity Networking\Editor\PhotonNetwork\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="websocket-sharp">
-      <HintPath>Assets\Plugins\WebSocket\websocket-sharp.dll</HintPath>
-    </Reference>
     <Reference Include="Photon3Unity3D">
       <HintPath>Assets\Plugins\Photon3Unity3D.dll</HintPath>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>Assets\Plugins\WebSocket\websocket-sharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +137,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
+    <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Editor\CustomTiledImporterAttribute.cs" />
+    <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Editor\ICustomTiledImporter.cs" />
+    <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Editor\ImportTiled2Unity.Material.cs" />
+    <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Editor\ImportTiled2Unity.Mesh.cs" />
+    <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Editor\ImportTiled2Unity.Texture.cs" />
+    <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Editor\ImportTiled2Unity.Xml.cs" />
+    <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Editor\ImportTiled2Unity.cs" />
+    <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Editor\ImportUtils.cs" />
+    <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Editor\SortingLayerExposedEditor.cs" />
+    <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Editor\Tiled2UnityMenuItems.cs" />
+    <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Editor\TiledAssetPostProcessor.cs" />
     <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\AccountService.cs" />
     <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\PhotonConverter.cs" />
     <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\PhotonEditor.cs" />
@@ -129,6 +164,15 @@
     <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonTransformViewEditor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\_ReadMe.txt" />
+    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map1.tiled2unity.xml" />
+    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\License.txt" />
+    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Meshes\Materials\_ReadMe.txt" />
+    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Meshes\_ReadMe.txt" />
+    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Prefabs\_ReadMe.txt" />
+    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Shaders\shaTiledMap.shader" />
+    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Textures\_ReadMe.txt" />
+    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Tiled2Unity.export.txt" />
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
     <None Include="Assets\Photon Unity Networking\readme.txt" />
     <None Include="Assets\Plugins\Photon3Unity3D.xml" />

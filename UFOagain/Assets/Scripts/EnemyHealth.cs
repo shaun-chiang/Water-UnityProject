@@ -37,14 +37,15 @@ public class EnemyHealth : MonoBehaviour {
         Shot shot = otherCollider.gameObject.GetComponent<Shot>();
         if (shot != null)
         {
-            if (!shot.isEnemy) 
-            {
-                Damage(shot.dmg);
-                
-
-            }
+            Damage(shot.dmg);
             Destroy(shot.gameObject);
         }
-    }
+
+        PlayerController pc = otherCollider.gameObject.GetComponent<PlayerController>();
+        if (pc != null)
+        {
+            Debug.Log("Triggered");
+        }
+    } 
 }
 

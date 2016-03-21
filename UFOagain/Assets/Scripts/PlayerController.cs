@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.CrossPlatformInput;
-using Photon;
 
-public class PlayerController : PunBehaviour {
+public class PlayerController : Photon.PunBehaviour {
     Rigidbody2D rb;
     public float speed;
     //public Rigidbody2D laserShotInstance;
+    public int y_rotate = -1;
 
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
-        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y*-1, transform.localScale.z);
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y*y_rotate, transform.localScale.z);
     }
 	
 	// Update is called once per frame
@@ -22,10 +22,8 @@ public class PlayerController : PunBehaviour {
             if (isShooting)
             {
                 WeaponScript ws = GetComponent<WeaponScript>();
-                Debug.Log("shot invoked");
                 if (ws != null)
                 {
-                    Debug.Log("Go!");
                     ws.Attack();
                 }
             }
