@@ -45,7 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Hafiz&apos;s Stuff\GunnerSprite\rifle\idle\PlayerMovement.cs" />
      <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Runtime\ImportBehaviour.cs" />
      <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Runtime\SortingLayerExposed.cs" />
      <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Runtime\TileAnimator.cs" />
