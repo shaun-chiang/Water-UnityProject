@@ -19,10 +19,12 @@ public class EnemyHealth : MonoBehaviour {
         hp -= damage;
         if (hp <= 0)
         {
+            //Destroy(gameObject.GetComponent<PhotonRigidbody2DView>());
+            //Destroy(gameObject.GetComponent<Rigidbody2D>());
+            Destroy(gameObject.GetComponent<Collider2D>());
             GetComponent<Animator>().SetBool("isDead", true);
             GetComponent<EnemyMove>().isAlive = false;
             StartCoroutine(wait());
-            
         }
     }
 

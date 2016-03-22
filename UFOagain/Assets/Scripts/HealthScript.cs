@@ -5,7 +5,7 @@ public class HealthScript : MonoBehaviour {
 
     public int hp = 2;
     public float playerRecoveryNo = 3f;
-    public float pushbackForce = 5000;
+    public float pushbackForce = 50;
 
     float playerRecovery = 0f;
     bool isInvin = false;
@@ -37,8 +37,7 @@ public class HealthScript : MonoBehaviour {
                 Vector3 dir = pointforce - transform.position;
                 dir = -dir.normalized;
                 var force = 50;
-                dir = dir * force;
-                Debug.Log(dir.ToString());
+                dir = dir * pushbackForce;
                 GetComponent<Rigidbody2D>().AddForce(dir, ForceMode2D.Impulse);
             }
                
