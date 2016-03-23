@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Pathfinding;
 
 public class EnemyMove : MonoBehaviour {
 
@@ -17,6 +18,7 @@ public class EnemyMove : MonoBehaviour {
 	void Start () {
         myTarget = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
+        
     }
 
 	
