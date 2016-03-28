@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.3.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -50,7 +52,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
@@ -59,7 +61,7 @@
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Unity\Editor\Data\Managed\UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="Pathfinding.Ionic.Zip.Reduced">
       <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
@@ -159,12 +161,12 @@
     <Compile Include="Assets\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
     <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
     <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
-    <Compile Include="Assets\Hafiz&apos;s Stuff\GunnerSprite\rifle\idle\PlayerMovement.cs" />
-    <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Runtime\ImportBehaviour.cs" />
-    <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Runtime\SortingLayerExposed.cs" />
-    <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Runtime\TileAnimator.cs" />
-    <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Runtime\TiledInitialShaderProperties.cs" />
-    <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Runtime\TiledMap.cs" />
+    <Compile Include="Assets\Hafiz's Stuff\GunnerSprite\rifle\idle\PlayerMovement.cs" />
+    <Compile Include="Assets\Hafiz's Stuff\Tiled2Unity\Scripts\Runtime\ImportBehaviour.cs" />
+    <Compile Include="Assets\Hafiz's Stuff\Tiled2Unity\Scripts\Runtime\SortingLayerExposed.cs" />
+    <Compile Include="Assets\Hafiz's Stuff\Tiled2Unity\Scripts\Runtime\TileAnimator.cs" />
+    <Compile Include="Assets\Hafiz's Stuff\Tiled2Unity\Scripts\Runtime\TiledInitialShaderProperties.cs" />
+    <Compile Include="Assets\Hafiz's Stuff\Tiled2Unity\Scripts\Runtime\TiledMap.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs" />
@@ -249,15 +251,15 @@
     <None Include="Assets\AstarPathfindingProject\Readme.txt" />
     <None Include="Assets\AstarPathfindingProject\Readme_upgrading.txt" />
     <None Include="Assets\AstarPathfindingProject\link.xml" />
-    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\_ReadMe.txt" />
-    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map1.tiled2unity.xml" />
-    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\License.txt" />
-    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Meshes\Materials\_ReadMe.txt" />
-    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Meshes\_ReadMe.txt" />
-    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Prefabs\_ReadMe.txt" />
-    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Shaders\shaTiledMap.shader" />
-    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Textures\_ReadMe.txt" />
-    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Tiled2Unity.export.txt" />
+    <None Include="Assets\Hafiz's Stuff\Tiled2Unity\Imported\_ReadMe.txt" />
+    <None Include="Assets\Hafiz's Stuff\Tiled2Unity\Imported\map1.tiled2unity.xml" />
+    <None Include="Assets\Hafiz's Stuff\Tiled2Unity\License.txt" />
+    <None Include="Assets\Hafiz's Stuff\Tiled2Unity\Meshes\Materials\_ReadMe.txt" />
+    <None Include="Assets\Hafiz's Stuff\Tiled2Unity\Meshes\_ReadMe.txt" />
+    <None Include="Assets\Hafiz's Stuff\Tiled2Unity\Prefabs\_ReadMe.txt" />
+    <None Include="Assets\Hafiz's Stuff\Tiled2Unity\Shaders\shaTiledMap.shader" />
+    <None Include="Assets\Hafiz's Stuff\Tiled2Unity\Textures\_ReadMe.txt" />
+    <None Include="Assets\Hafiz's Stuff\Tiled2Unity\Tiled2Unity.export.txt" />
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
     <None Include="Assets\Photon Unity Networking\readme.txt" />
     <None Include="Assets\Plugins\Photon3Unity3D.xml" />
