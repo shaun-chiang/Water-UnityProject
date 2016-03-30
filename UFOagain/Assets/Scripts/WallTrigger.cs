@@ -12,7 +12,7 @@ public class WallTrigger : MonoBehaviour {
 	void Update () {
 	
 	}
-
+    /*
     void OnTriggerEnter2D(Collider2D otherCollider)
     {
         Shot shot = otherCollider.gameObject.GetComponent<Shot>();
@@ -21,5 +21,5 @@ public class WallTrigger : MonoBehaviour {
             Destroy(shot.gameObject);
         }
 
-    }
+    } */
 }

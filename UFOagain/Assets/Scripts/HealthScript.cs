@@ -36,8 +36,8 @@ public class HealthScript : MonoBehaviour {
                 Vector3 pointforce = other.contacts[0].point;
                 Vector3 dir = pointforce - transform.position;
                 dir = -dir.normalized;
-                var force = 50;
-                dir = dir * pushbackForce;
+                var force = 30;
+                dir = dir * force;
                 GetComponent<Rigidbody2D>().AddForce(dir, ForceMode2D.Impulse);
             }
                

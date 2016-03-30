@@ -44,7 +44,6 @@ public class EnemyMove : MonoBehaviour {
 
         else
         {
-            Debug.Log("Enemy moving");
         }
     }
 

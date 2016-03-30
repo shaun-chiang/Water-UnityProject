@@ -26,8 +26,6 @@ public class Shot : MonoBehaviour {
     void FixedUpdate()
     {
         rb.velocity = (transform.right * laserSpeed);
-
-
     }
 
     void OnBecomeInvisible()
@@ -40,4 +38,24 @@ public class Shot : MonoBehaviour {
         return this.id;
     }
 
+    void OnTriggerEnter2D(Collider2D otherCollider)
+    {
+        WeaponScript ws = otherCollider.GetComponent<WeaponScript>();
+        if (ws == null)
+        {
+            GetComponent<Animator>().SetBool("isSuccessfulhit", true);
+            Destroy(GetComponent<Collider2D>());
+            //shot.enabled = false;
+            laserSpeed = 0;
+            StartCoroutine(shotwait());
+            //Destroy(shot.gameObject);
+        }
+
+    }
+
+    IEnumerator shotwait()
+    {
+        yield return new WaitForSeconds(13);
+        Destroy(gameObject);
+    }
 }

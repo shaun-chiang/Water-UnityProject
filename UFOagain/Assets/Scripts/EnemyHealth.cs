@@ -36,20 +36,21 @@ public class EnemyHealth : MonoBehaviour {
         Destroy(gameObject);
     }
 
+    
+
     void OnTriggerEnter2D(Collider2D otherCollider)
     {
         Shot shot = otherCollider.gameObject.GetComponent<Shot>();
         if (shot != null)
         {
+            
+            var force = 30;
+            GetComponent<Rigidbody2D>().AddForce(otherCollider.gameObject.GetComponent<Rigidbody2D>().velocity * force, ForceMode2D.Force);
             Damage(shot.dmg);
-            Destroy(shot.gameObject);
+            //Destroy(shot.gameObject);
         }
 
-        PlayerController pc = otherCollider.gameObject.GetComponent<PlayerController>();
-        if (pc != null)
-        {
-            Debug.Log("Triggered");
-        }
     } 
+
 }
 
