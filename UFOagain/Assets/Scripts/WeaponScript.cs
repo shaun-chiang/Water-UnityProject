@@ -31,6 +31,7 @@ public class WeaponScript : Photon.PunBehaviour {
     {
         if (canAttack())
         {
+            GetComponent<Animator>().SetTrigger("attack");
             cooldown = rof;
             GetComponent<PhotonView>().RPC("shotActive", PhotonTargets.AllViaServer); 
             //var laserShotInstance = Instantiate(laserShotPrefab, transform.position, transform.rotation) as Rigidbody2D;

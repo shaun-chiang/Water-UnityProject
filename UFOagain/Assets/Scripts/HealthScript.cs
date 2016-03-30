@@ -52,6 +52,7 @@ public class HealthScript : MonoBehaviour {
 
         if (hp <= 0)
         {
+            Destroy(gameObject.GetComponent<Collider2D>());
             GetComponent<Animator>().SetBool("isDead", true);
             Destroy(gameObject.GetComponent<PlayerController>());
             StartCoroutine(wait());

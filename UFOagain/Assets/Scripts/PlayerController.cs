@@ -7,11 +7,14 @@ public class PlayerController : Photon.PunBehaviour {
     public float speed;
     //public Rigidbody2D laserShotInstance;
     public int y_rotate = -1;
+    private SpriteRenderer circle;
 
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y*y_rotate, transform.localScale.z);
+        circle = GetComponentsInChildren<SpriteRenderer>()[1];
+        circle.color = Color.red;
     }
 	
 	// Update is called once per frame
@@ -43,12 +46,16 @@ public class PlayerController : Photon.PunBehaviour {
             Quaternion rot = Quaternion.LookRotation(moveVec, Vector3.forward);
             if (moveVec.sqrMagnitude > 0.1f)
             {
+                GetComponent<Animator>().SetBool("isWalking", true);
                 transform.rotation = new Quaternion(0, 0, rot.z, rot.w);
                 //transform.eulerAngles.Set(0, 0, transform.eulerAngles.z);
                 rb.angularVelocity = 0;
             }
 
-
+            else
+            {
+                GetComponent<Animator>().SetBool("isWalking", false);
+            }
 
             //float input = Input.GetAxis("Vertical");
             //Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);

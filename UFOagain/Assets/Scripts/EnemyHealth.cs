@@ -22,9 +22,11 @@ public class EnemyHealth : MonoBehaviour {
             //Destroy(gameObject.GetComponent<PhotonRigidbody2DView>());
             //Destroy(gameObject.GetComponent<Rigidbody2D>());
             Destroy(gameObject.GetComponent<Collider2D>());
+            GetComponent<AILerp>().enabled = false;
             GetComponent<Animator>().SetBool("isDead", true);
             GetComponent<EnemyMove>().isAlive = false;
             StartCoroutine(wait());
+            Debug.Log("Enemy dead");
         }
     }
 
