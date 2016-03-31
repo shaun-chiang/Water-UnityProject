@@ -5,7 +5,6 @@ using Random = UnityEngine.Random;
 public class RoomBrowser : MonoBehaviour
 {
     public GUISkin Skin;
-    public Vector2 WidthAndHeight = new Vector2(600, 400);
     private string roomName = "myRoom";
 
     private Vector2 scrollPos = Vector2.zero;
@@ -14,7 +13,7 @@ public class RoomBrowser : MonoBehaviour
 
     public static readonly string SceneNameMenu = "NetworkLobby";
 
-    public static readonly string SceneNameGame = "ongoing";
+    public static readonly string SceneNameGame = "WaitingRoom";
 
     private string errorDialog;
     private double timeToClearDialog;
@@ -89,11 +88,11 @@ public class RoomBrowser : MonoBehaviour
             return;
         }
 
-        Rect content = new Rect(0, 0, 480, 320);
+        Rect content = new Rect(-7, -25, 495, 370);
         GUI.backgroundColor = Color.white;
-        WindowFunction(0);
+        //WindowFunction(0);
   
-        //GUI.Window(0, content, WindowFunction, "Join or Create Room");
+        GUI.Window(0, content, WindowFunction, "Join or Create Room");
 
 
     }
@@ -101,16 +100,23 @@ public class RoomBrowser : MonoBehaviour
     private void WindowFunction(int id)
     {
         
-        Rect content = new Rect(0, 0, 480, 320);
+        Rect content = new Rect(28, 99, 435, 320);
         GUILayout.BeginArea(content);
 
-        GUILayout.Space(20);
+        //GUILayout.Space(85);
 
         // Player name
         GUILayout.BeginHorizontal();
         GUILayout.Label("Player name:", GUILayout.Width(150));
-        PhotonNetwork.playerName = GUILayout.TextField(PhotonNetwork.playerName);
-        GUILayout.Space(129);
+        if (!SystemInfo.deviceName.Equals("<unknown>"))
+        {
+            PhotonNetwork.playerName = GUILayout.TextField(SystemInfo.deviceName);
+        } else
+        {
+            PhotonNetwork.playerName = GUILayout.TextField(PhotonNetwork.playerName);
+        }
+
+        GUILayout.Space(5);
         if (GUI.changed)
         {
             // Save name
@@ -118,7 +124,7 @@ public class RoomBrowser : MonoBehaviour
         }
         GUILayout.EndHorizontal();
 
-        GUILayout.Space(15);
+        //GUILayout.Space(15);
 
         // Join room by title
         GUILayout.BeginHorizontal();
@@ -127,7 +133,8 @@ public class RoomBrowser : MonoBehaviour
 
         if (GUILayout.Button("Create Room", GUILayout.Width(125)))
         {
-            PhotonNetwork.CreateRoom(this.roomName, new RoomOptions() { maxPlayers = 4 }, null);
+			PlayerPrefs.SetString ("roomName", this.roomName);
+			PhotonNetwork.LoadLevel(SceneNameGame);
         }
 
         GUILayout.EndHorizontal();
@@ -147,20 +154,16 @@ public class RoomBrowser : MonoBehaviour
             }
         }
 
-        GUILayout.Space(15);
+        //GUILayout.Space(15);
 
         // Join random room
         GUILayout.BeginHorizontal();
-        if ((PhotonNetwork.countOfPlayers == 1))
+        if ((PhotonNetwork.countOfRooms == 1))
         {
-            GUILayout.Label(PhotonNetwork.countOfPlayers + " user is online in " + PhotonNetwork.countOfRooms + " rooms.");
-        }
-        else if ((PhotonNetwork.countOfRooms == 1))
-        {
-            GUILayout.Label(PhotonNetwork.countOfPlayers + " users are online in " + PhotonNetwork.countOfRooms + " room.");
+            GUILayout.Label(PhotonNetwork.countOfPlayers + " online in " + PhotonNetwork.countOfRooms + " room.");
         } else
         {
-            GUILayout.Label(PhotonNetwork.countOfPlayers + " users are online in " + PhotonNetwork.countOfRooms + " rooms.");
+            GUILayout.Label(PhotonNetwork.countOfPlayers + " online in " + PhotonNetwork.countOfRooms + " rooms.");
         }
      
         if (GUILayout.Button("Join Random", GUILayout.Width(125)))
@@ -169,7 +172,8 @@ public class RoomBrowser : MonoBehaviour
         }
         if (GUILayout.Button("Join Room", GUILayout.Width(125)))
         {
-            PhotonNetwork.JoinRoom(this.roomName);
+			PlayerPrefs.SetString("roomName", this.roomName);
+			PhotonNetwork.JoinRoom(PlayerPrefs.GetString("roomName"));
         }
 
 
@@ -179,12 +183,11 @@ public class RoomBrowser : MonoBehaviour
         if (PhotonNetwork.countOfRooms == 0)
         {
             GUILayout.Label("Currently no games are available.");
-            GUILayout.Label("Rooms will be listed here, when they become available.");
+            //GUILayout.Label("Rooms will be listed here, when they become available.");
         }
         else
         {
-            GUILayout.Label(PhotonNetwork.countOfRooms + " rooms available:");
-
+        
             // Room listing: simply call GetRoomList: no need to fetch/poll whatever!
             this.scrollPos = GUILayout.BeginScrollView(this.scrollPos);
             RoomInfo[] roominf = PhotonNetwork.GetRoomList();
@@ -220,7 +223,7 @@ public class RoomBrowser : MonoBehaviour
 
     public void OnPhotonJoinRoomFailed(object[] cause)
     {
-        ErrorDialog = "Error: Can't join room (full or unknown room name). " + cause[1];
+        ErrorDialog = "Error: Can't join room (full or unknown room name).";
         Debug.Log("OnPhotonJoinRoomFailed got called. This can happen if the room is not existing or full or closed.");
     }
 
@@ -233,7 +236,6 @@ public class RoomBrowser : MonoBehaviour
     public void OnCreatedRoom()
     {
         Debug.Log("OnCreatedRoom");
-        PhotonNetwork.LoadLevel(SceneNameGame);
     }
 
     public void OnDisconnectedFromPhoton()

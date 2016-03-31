@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
+- path: Assets/Scenes/WaitingRoom.unity
+=======
 - path: Assets/Scenes/ongoing.unity
+>>>>>>> 869094651b079d77b824cba0c097c52fb488e624
   isLoaded: 1
   isActive: 1
