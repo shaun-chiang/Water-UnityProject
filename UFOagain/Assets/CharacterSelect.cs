@@ -74,14 +74,12 @@ public class CharacterSelect : MonoBehaviour {
 		archerbutton = "Select";
 		if (GUI.Button(new Rect(13, 170, 100, 25) ,(archerbutton)))
 		{
-			if (PhotonNetwork.isMasterClient) {
-				PhotonNetwork.CreateRoom (PlayerPrefs.GetString ("roomName"), new RoomOptions () { maxPlayers = 4 }, null);
-			} else {
-				PhotonNetwork.JoinRoom (PlayerPrefs.GetString ("roomName"));
-			}
-		}
-		//mage
-		GUI.Box(new Rect(120,0,95,208),"");
+            PlayerPrefs.SetString("Class", "Archer");
+            PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("roomName"), new RoomOptions() { maxPlayers = 4 }, null);
+
+        }
+        //mage
+        GUI.Box(new Rect(120,0,95,208),"");
 		GUI.Label (new Rect (110, 85, 115, 30), "Mage");
 		//draw hp
 		GUI.TextField (new Rect (125, 110, 30, 30), "HP",GUI.skin.FindStyle("PlainText"));
@@ -107,15 +105,13 @@ public class CharacterSelect : MonoBehaviour {
 		//draw button
 		magebutton = "Select";
 		if (GUI.Button(new Rect(118, 170, 100, 25) ,(magebutton)))
-		{
-			if (PhotonNetwork.isMasterClient) {
-				PhotonNetwork.CreateRoom (PlayerPrefs.GetString ("roomName"), new RoomOptions () { maxPlayers = 4 }, null);
-			} else {
-				PhotonNetwork.JoinRoom (PlayerPrefs.GetString ("roomName"));
-			}
-		}
-		//paladin
-		GUI.Box(new Rect(226,0,95,208),"");
+        {
+            PlayerPrefs.SetString("Class", "Mage");
+            PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("roomName"), new RoomOptions() { maxPlayers = 4 }, null);
+
+        }
+        //paladin
+        GUI.Box(new Rect(226,0,95,208),"");
 		GUI.Label (new Rect (216, 85, 115, 30), "Paladin");
 		//draw hp
 		GUI.TextField (new Rect (231, 110, 30, 30), "HP",GUI.skin.FindStyle("PlainText"));
@@ -142,14 +138,13 @@ public class CharacterSelect : MonoBehaviour {
 		paladinbutton = "Select";
 		if (GUI.Button(new Rect(224, 170, 100, 25) ,(paladinbutton)))
 		{
-			if (PhotonNetwork.isMasterClient) {
-				PhotonNetwork.CreateRoom (PlayerPrefs.GetString ("roomName"), new RoomOptions () { maxPlayers = 4 }, null);
-			} else {
-				PhotonNetwork.JoinRoom (PlayerPrefs.GetString ("roomName"));
-			}
-		}
-		//gunner
-		GUI.Box(new Rect(331,0,95,208),"");
+
+            PlayerPrefs.SetString("Class", "Enemy"); //for now, change to paladin later
+            PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("roomName"), new RoomOptions() { maxPlayers = 4 }, null);
+
+        }
+        //gunner
+        GUI.Box(new Rect(331,0,95,208),"");
 		GUI.Label (new Rect (321, 85, 115, 30), "Gunner");
 		//draw hp
 		GUI.TextField (new Rect (336, 110, 30, 30), "HP",GUI.skin.FindStyle("PlainText"));
@@ -176,11 +171,10 @@ public class CharacterSelect : MonoBehaviour {
 		gunnerbutton = "Select";
 		if (GUI.Button(new Rect(329, 170, 100, 25) ,(gunnerbutton)))
 		{
-			if (PhotonNetwork.isMasterClient) {
-				PhotonNetwork.CreateRoom (PlayerPrefs.GetString ("roomName"), new RoomOptions () { maxPlayers = 4 }, null);
-			} else {
-				PhotonNetwork.JoinRoom (PlayerPrefs.GetString ("roomName"));
-			}
+
+            PlayerPrefs.SetString("Class", "GunnerIdle");
+            PhotonNetwork.JoinOrCreateRoom (PlayerPrefs.GetString ("roomName"), new RoomOptions () { maxPlayers = 4 }, null);
+			
 		}
 		GUILayout.EndArea();
 
