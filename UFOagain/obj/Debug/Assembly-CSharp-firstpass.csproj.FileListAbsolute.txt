@@ -22,3 +22,29 @@ C:\Users\Public\Documents\Unity Projects\Water-UnityProject\UFOagain\Temp\bin\De
 C:\Users\Public\Documents\Unity Projects\Water-UnityProject\UFOagain\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
 C:\Users\Public\Documents\Unity Projects\Water-UnityProject\UFOagain\obj\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\Public\Documents\Unity Projects\Water-UnityProject\UFOagain\obj\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\Pathfinding.Ionic.Zip.Reduced.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\Pathfinding.JsonFx.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\Photon3Unity3D.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\UnityEditor.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\UnityEngine.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\websocket-sharp.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\UnityEngine.xml
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\UnityEditor.xml
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\-\Documents\gitUNity\UFOagain\Temp\bin\Debug\Photon3Unity3D.xml
+C:\Users\-\Documents\gitUNity\UFOagain\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
+C:\Users\-\Documents\gitUNity\UFOagain\obj\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\-\Documents\gitUNity\UFOagain\obj\Debug\Assembly-CSharp-firstpass.pdb
