@@ -126,12 +126,12 @@
      <Compile Include="Assets\CharacterSelect.cs" />
      <Compile Include="Assets\Fading.cs" />
      <Compile Include="Assets\Hafiz&apos;s Stuff\GunnerSprite\rifle\idle\PlayerMovement.cs" />
+     <Compile Include="Assets\Hafiz&apos;s Stuff\GunnerSpriteUpdate\Character\idle\PlayerMovement.cs" />
      <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Runtime\ImportBehaviour.cs" />
      <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Runtime\SortingLayerExposed.cs" />
      <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Runtime\TileAnimator.cs" />
      <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Runtime\TiledInitialShaderProperties.cs" />
      <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Runtime\TiledMap.cs" />
-     <Compile Include="Assets\LavaDamage.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs" />
@@ -197,13 +197,11 @@
      <Compile Include="Assets\Scripts\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\EnemyMove.cs" />
      <Compile Include="Assets\Scripts\HealthScript.cs" />
-     <Compile Include="Assets\Scripts\LavaDamage2.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Shot.cs" />
      <Compile Include="Assets\Scripts\SpawnEnemyScript.cs" />
      <Compile Include="Assets\Scripts\WallTrigger.cs" />
      <Compile Include="Assets\Scripts\WeaponScript.cs" />
-     <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map6.tiled2unity.xml" />
      <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map3.tiled2unity.xml" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.shader" />
      <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Prefabs\_ReadMe.txt" />
@@ -227,7 +225,6 @@
      <None Include="Assets\Necromancer GUI\Readme.txt" />
      <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map1.tiled2unity.xml" />
      <None Include="Assets\AstarPathfindingProject\Readme.txt" />
-     <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map4.tiled2unity.xml" />
      <None Include="Assets\Photon Unity Networking\readme.txt" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\JsonFxLicense.txt" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />

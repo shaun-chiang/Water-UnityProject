@@ -87,7 +87,6 @@
      <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonRigidbody2DViewEditor.cs" />
      <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonRigidbodyViewEditor.cs" />
      <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonTransformViewEditor.cs" />
-     <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map6.tiled2unity.xml" />
      <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map3.tiled2unity.xml" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.shader" />
      <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Prefabs\_ReadMe.txt" />
@@ -111,7 +110,6 @@
      <None Include="Assets\Necromancer GUI\Readme.txt" />
      <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map1.tiled2unity.xml" />
      <None Include="Assets\AstarPathfindingProject\Readme.txt" />
-     <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map4.tiled2unity.xml" />
      <None Include="Assets\Photon Unity Networking\readme.txt" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\JsonFxLicense.txt" />
      <None Include="Assets\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />

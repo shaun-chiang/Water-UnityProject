@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class HealthScript : MonoBehaviour {
 
+    public int maxHp = 100;
     public int hp = 2;
     public float playerRecoveryNo = 3f;
     public float pushbackForce = 50;
@@ -10,10 +12,21 @@ public class HealthScript : MonoBehaviour {
     float playerRecovery = 0f;
     bool isInvin = false;
 
+    public Image healthBar;
+    public Image bgHealthBar;
+    public GameObject canvas;
+    Image newImage;
+    Image newBgImage;
+
     // Use this for initialization
     void Start () {
-	
-	}
+        GameObject newCanvas = Instantiate(canvas) as GameObject;
+        newBgImage = Instantiate(bgHealthBar);
+        newBgImage.transform.SetParent(newCanvas.transform, false);
+        newImage = Instantiate(healthBar);
+        newImage.transform.SetParent(newCanvas.transform, false);
+        UpdateHpBar();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -31,7 +44,7 @@ public class HealthScript : MonoBehaviour {
         {
             if (playerRecovery <= 0 && !isInvin)
             {
-                Damage(1);
+                Damage(5);
                 //Push back player
                 Vector3 pointforce = other.contacts[0].point;
                 Vector3 dir = pointforce - transform.position;
@@ -61,7 +74,15 @@ public class HealthScript : MonoBehaviour {
         {
             isInvin = true;
             StartCoroutine(flash());
-        }        
+        }
+
+        UpdateHpBar();
+    }
+
+    void UpdateHpBar()
+    {
+        newImage.fillAmount = (float)hp / maxHp;
+        //newImage.color = Color.Lerp(Color.red, Color.green, (float)hp / maxHp);
     }
 
     IEnumerator wait()
