@@ -12,20 +12,12 @@ public class HealthScript : MonoBehaviour {
     float playerRecovery = 0f;
     bool isInvin = false;
 
-    public Image healthBar;
-    public Image bgHealthBar;
-    public GameObject canvas;
-    Image newImage;
-    Image newBgImage;
+    public SpriteRenderer healthBar;
+    private Vector2 healthScale;
 
     // Use this for initialization
     void Start () {
-        GameObject newCanvas = Instantiate(canvas) as GameObject;
-        newBgImage = Instantiate(bgHealthBar);
-        newBgImage.transform.SetParent(newCanvas.transform, false);
-        newImage = Instantiate(healthBar);
-        newImage.transform.SetParent(newCanvas.transform, false);
-        UpdateHpBar();
+        healthScale = healthBar.transform.localScale;
     }
 	
 	// Update is called once per frame
@@ -76,13 +68,12 @@ public class HealthScript : MonoBehaviour {
             StartCoroutine(flash());
         }
 
-        UpdateHpBar();
+        UpdateHealthBar();
     }
 
-    void UpdateHpBar()
+    void UpdateHealthBar()
     {
-        newImage.fillAmount = (float)hp / maxHp;
-        //newImage.color = Color.Lerp(Color.red, Color.green, (float)hp / maxHp);
+        healthBar.transform.localScale = new Vector2(healthScale.x * hp * 0.01f, 1);
     }
 
     IEnumerator wait()
