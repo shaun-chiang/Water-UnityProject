@@ -139,7 +139,7 @@ public class CharacterSelect : MonoBehaviour {
 		if (GUI.Button(new Rect(224, 170, 100, 25) ,(paladinbutton)))
 		{
 
-            PlayerPrefs.SetString("Class", "Enemy"); //for now, change to paladin later
+            PlayerPrefs.SetString("Class", "Paladin"); //for now, change to paladin later
             PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("roomName"), new RoomOptions() { maxPlayers = 4 }, null);
 
         }

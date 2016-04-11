@@ -386,39 +386,46 @@ public class AILerp : MonoBehaviour {
 		}
 	}
 
-	protected virtual void Update () {
+    protected virtual void Update()
+    {
         if (playerLock <= 0)
         {
             target = findNearestPlayer().transform;
         }
         playerLock -= Time.deltaTime;
-        if (canMove) {
-			Vector3 direction;
-			Vector3 nextPos = CalculateNextPosition(out direction);
+        if (canMove)
+        {
+            Vector3 direction;
+            Vector3 nextPos = CalculateNextPosition(out direction);
 
-			// Rotate unless we are really close to the target
-			if (enableRotation && direction != Vector3.zero) {
-				if (rotationIn2D) {
-					float angle = Mathf.Atan2(direction.x, -direction.y) * Mathf.Rad2Deg + 180;
-					Vector3 euler = tr.eulerAngles;
-					euler.z = Mathf.LerpAngle(euler.z, angle, Time.deltaTime * rotationSpeed);
-					tr.eulerAngles = euler;
-				} else {
-					Quaternion rot = tr.rotation;
-					Quaternion desiredRot = Quaternion.LookRotation(direction);
+            // Rotate unless we are really close to the target
+            if (enableRotation && direction != Vector3.zero)
+            {
+                if (rotationIn2D)
+                {
+                    float angle = Mathf.Atan2(direction.x, -direction.y) * Mathf.Rad2Deg + 180;
+                    Vector3 euler = tr.eulerAngles;
+                    euler.z = Mathf.LerpAngle(euler.z, angle, Time.deltaTime * rotationSpeed);
+                    tr.eulerAngles = euler;
+                }
+                else {
+                    Quaternion rot = tr.rotation;
+                    Quaternion desiredRot = Quaternion.LookRotation(direction);
 
-					tr.rotation = Quaternion.Slerp(rot, desiredRot, Time.deltaTime * rotationSpeed);
-				}
-			}
+                    tr.rotation = Quaternion.Slerp(rot, desiredRot, Time.deltaTime * rotationSpeed);
+                }
+            }
 
-			tr.position = nextPos;
-		}
-	}
+            Vector2 dir = (Vector2)nextPos - (Vector2)tr.position;
+            dir.Normalize();
+            GetComponent<Rigidbody2D>().AddForce(dir * 10);
+        }
+    }
 
-	/** Calculate the AI's next position (one frame in the future).
+    /** Calculate the AI's next position (one frame in the future).
 	 * \param direction The direction of the segment the AI is currently traversing. Not normalized.
 	 */
-	protected virtual Vector3 CalculateNextPosition (out Vector3 direction) {
+    protected virtual Vector3 CalculateNextPosition (out Vector3 direction) {
 		if (path == null || path.vectorPath == null || path.vectorPath.Count == 0) {
 			direction = Vector3.zero;
 			return tr.position;

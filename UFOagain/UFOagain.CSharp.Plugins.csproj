@@ -67,12 +67,6 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
     <Reference Include="Pathfinding.Ionic.Zip.Reduced">
       <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
@@ -126,6 +120,9 @@
     <None Include="Assets\AstarPathfindingProject\link.xml" />
     <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\_ReadMe.txt" />
     <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map1.tiled2unity.xml" />
+    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map2.tiled2unity.xml" />
+    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map3.tiled2unity.xml" />
+    <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map5.tiled2unity.xml" />
     <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\License.txt" />
     <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Meshes\Materials\_ReadMe.txt" />
     <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Meshes\_ReadMe.txt" />
