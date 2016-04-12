@@ -16,7 +16,12 @@ public class CharacterSelect : MonoBehaviour {
     public static readonly string SceneNameMenu = "WaitingRoom";
     
 
-    public static readonly string SceneNameGame = "ongoing";
+    public static readonly string SceneNameGame = "InBetweenLoadingScenes";
+
+    void Start()
+    {
+        PlayerPrefs.SetString("NextScene", "ongoing");
+    }
 
     public void Awake()
     {
@@ -171,7 +176,6 @@ public class CharacterSelect : MonoBehaviour {
 		gunnerbutton = "Select";
 		if (GUI.Button(new Rect(329, 170, 100, 25) ,(gunnerbutton)))
 		{
-
             PlayerPrefs.SetString("Class", "GunnerIdle");
             PhotonNetwork.JoinOrCreateRoom (PlayerPrefs.GetString ("roomName"), new RoomOptions () { maxPlayers = 4 }, null);
 			

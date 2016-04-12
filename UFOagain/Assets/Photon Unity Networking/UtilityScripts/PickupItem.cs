@@ -56,7 +56,7 @@ public class PickupItem : Photon.MonoBehaviour, IPunObservable
     public static HashSet<PickupItem> DisabledPickupItems = new HashSet<PickupItem>();
 
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
         // we only call Pickup() if "our" character collides with this PickupItem.
         // note: if you "position" remote characters by setting their translation, triggers won't be hit.
