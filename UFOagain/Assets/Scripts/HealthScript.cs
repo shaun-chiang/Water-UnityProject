@@ -14,21 +14,22 @@ public class HealthScript : MonoBehaviour {
 
     public SpriteRenderer healthBar;
     private Vector2 healthScale;
+    public int barSpriteScale = 1;
 
     // Use this for initialization
     void Start () {
         healthScale = healthBar.transform.localScale;
+        UpdateHealthBar();
     }
 	
 	// Update is called once per frame
 	void Update () {
-	    if (playerRecovery > 0)
+        if (playerRecovery > 0)
         {
             playerRecovery -= Time.deltaTime;
         }
 	}
-
-    
+        
     void OnCollisionEnter2D(Collision2D other)
     {
         EnemyHealth eh = other.gameObject.GetComponent<EnemyHealth>();
@@ -36,7 +37,7 @@ public class HealthScript : MonoBehaviour {
         {
             if (playerRecovery <= 0 && !isInvin)
             {
-                Damage(5);
+                AdjustHealth(-5);
                 //Push back player
                 Vector3 pointforce = other.contacts[0].point;
                 Vector3 dir = pointforce - transform.position;
@@ -49,14 +50,18 @@ public class HealthScript : MonoBehaviour {
         }
     } 
     
-
-    public void Damage(int damage)
+    public void AdjustHealth(int healthChange)
     {
         playerRecovery = playerRecoveryNo;
-        hp -= damage;
+        hp += healthChange;
 
-        if (hp <= 0)
+        if(hp > maxHp)
         {
+            hp = maxHp;
+        }
+        else if (hp <= 0)
+        {
+            hp = 0;
             Destroy(gameObject.GetComponent<Collider2D>());
             GetComponent<Animator>().SetBool("isDead", true);
             Destroy(gameObject.GetComponent<PlayerController>());
@@ -73,7 +78,7 @@ public class HealthScript : MonoBehaviour {
 
     void UpdateHealthBar()
     {
-        healthBar.transform.localScale = new Vector2(healthScale.x * hp * 0.01f, 1);
+        healthBar.transform.localScale = new Vector2(healthScale.x * hp * 0.01f, barSpriteScale);
     }
 
     IEnumerator wait()
