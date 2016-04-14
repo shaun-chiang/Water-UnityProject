@@ -178,7 +178,7 @@ public class PickupItem : Photon.MonoBehaviour, IPunObservable
         if (timeUntilRespawn > 0)
         {
             this.TimeOfRespawn = PhotonNetwork.time + timeUntilRespawn;
-            Invoke("PunRespawn", timeUntilRespawn);
+            //Invoke("PunRespawn", timeUntilRespawn);
         }
     }
 
