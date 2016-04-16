@@ -231,6 +231,7 @@
      <None Include="Assets\AstarPathfindingProject\Plugins\dependencies.txt" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\_Example Scenes.txt" />
      <None Include="Assets\Necromancer GUI\Kingthings.txt" />
+     <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map9.tiled2unity.xml" />
      <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map5.tiled2unity.xml" />
      <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map8(new).tiled2unity.xml" />
      <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map2.tiled2unity.xml" />
