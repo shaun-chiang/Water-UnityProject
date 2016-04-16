@@ -67,9 +67,10 @@
      <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs" />
      <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
      <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
-     <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map8.tiled2unity.xml" />
      <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map3.tiled2unity.xml" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.shader" />
+     <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map7.tiled2unity.xml" />
+     <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map6.tiled2unity.xml" />
      <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Prefabs\_ReadMe.txt" />
      <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Shaders\shaTiledMap.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\DotNetZip\DotNetZipLicense.txt" />
@@ -83,6 +84,7 @@
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\_Example Scenes.txt" />
      <None Include="Assets\Necromancer GUI\Kingthings.txt" />
      <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map5.tiled2unity.xml" />
+     <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map8(new).tiled2unity.xml" />
      <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Imported\map2.tiled2unity.xml" />
      <None Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Meshes\Materials\_ReadMe.txt" />
      <None Include="Assets\AstarPathfindingProject\Readme_upgrading.txt" />

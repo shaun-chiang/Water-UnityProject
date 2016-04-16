@@ -73,15 +73,7 @@ public class ExplosiveCharge : MonoBehaviour {
 			}
 				
 			}
-			/*if(blastRadius >= Vector3.Distance(transform.position, coll.transform.position)) {
-				EnemyHealth hscript =enemy.GetComponent<EnemyHealth>();
-				hscript.Damage(dmg);
-
-
-
-			}*/
-
-		//}
+			
 
 	}
 
