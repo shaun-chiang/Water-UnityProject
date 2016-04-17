@@ -8,6 +8,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 
         public string Name;
 
+       
         void OnEnable()
         {
 

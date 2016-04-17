@@ -9,6 +9,11 @@ public class PlayerController : Photon.PunBehaviour {
     public int y_rotate = -1;
     private SpriteRenderer circle;
 
+    //Gunner Skill 1 button
+    public Sprite gunner1;
+    
+    //Gunner
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -21,8 +26,12 @@ public class PlayerController : Photon.PunBehaviour {
 	void Update () {
         if (PhotonView.Get(this).isMine)
         {
+            //Secondary attacks
             bool isSecondary1 = CrossPlatformInputManager.GetButton("Secondary");
-            // Debug.Log(isSecondary1);
+            bool isSecondary2 = CrossPlatformInputManager.GetButton("Secondary2");
+            bool isSecondary3 = CrossPlatformInputManager.GetButton("Secondary3");
+
+            //Basic Shot
             bool isShooting = CrossPlatformInputManager.GetButton("Shoot");
             if (isShooting)
             {
@@ -34,6 +43,24 @@ public class PlayerController : Photon.PunBehaviour {
             }
 
             if (isSecondary1)
+            {
+                WeaponScript ws = GetComponent<WeaponScript>();
+                if (ws != null)
+                {
+                    ws.Secondary1();
+                }
+            }
+
+            if (isSecondary2)
+            {
+                WeaponScript ws = GetComponent<WeaponScript>();
+                if (ws != null)
+                {
+                    ws.Secondary1();
+                }
+            }
+
+            if (isSecondary3)
             {
                 WeaponScript ws = GetComponent<WeaponScript>();
                 if (ws != null)
@@ -67,11 +94,6 @@ public class PlayerController : Photon.PunBehaviour {
             {
                 GetComponent<Animator>().SetBool("isWalking", false);
             }
-
-            //float input = Input.GetAxis("Vertical");
-            //Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
-            //rb.AddForce(movement * speed);
-            //transform.position += movement * speed;
         }
     }
 }

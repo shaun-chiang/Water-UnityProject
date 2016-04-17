@@ -259,6 +259,7 @@
     <Compile Include="Assets\Scripts\Shot.cs" />
     <Compile Include="Assets\Scripts\Shot2.cs" />
     <Compile Include="Assets\Scripts\Shot_gambit.cs" />
+    <Compile Include="Assets\Scripts\SkillButton1.cs" />
     <Compile Include="Assets\Scripts\SpawnEnemyScript.cs" />
     <Compile Include="Assets\Scripts\WallTrigger.cs" />
     <Compile Include="Assets\Scripts\WeaponScript.cs" />
