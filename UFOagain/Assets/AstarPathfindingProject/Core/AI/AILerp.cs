@@ -386,7 +386,7 @@ public class AILerp : MonoBehaviour {
 		}
 	}
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         if (playerLock <= 0)
         {

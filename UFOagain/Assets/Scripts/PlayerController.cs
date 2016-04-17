@@ -21,6 +21,8 @@ public class PlayerController : Photon.PunBehaviour {
 	void Update () {
         if (PhotonView.Get(this).isMine)
         {
+            bool isSecondary1 = CrossPlatformInputManager.GetButton("Secondary");
+            // Debug.Log(isSecondary1);
             bool isShooting = CrossPlatformInputManager.GetButton("Shoot");
             if (isShooting)
             {
@@ -28,6 +30,15 @@ public class PlayerController : Photon.PunBehaviour {
                 if (ws != null)
                 {
                     ws.Attack();
+                }
+            }
+
+            if (isSecondary1)
+            {
+                WeaponScript ws = GetComponent<WeaponScript>();
+                if (ws != null)
+                {
+                    ws.Secondary1();
                 }
             }
         }

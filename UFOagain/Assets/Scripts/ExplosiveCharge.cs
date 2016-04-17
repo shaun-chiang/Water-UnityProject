@@ -3,7 +3,8 @@ using System.Collections;
 
 public class ExplosiveCharge : MonoBehaviour {
 
-	public int dmg=10;
+    public int dmg = 10;
+    public int throwForce = 7;
 
 	private Rigidbody2D rb;
 	private int id = 0;
@@ -17,7 +18,7 @@ public class ExplosiveCharge : MonoBehaviour {
 	{
 		rb = this.GetComponent<Rigidbody2D>();
 		transform.Rotate(new Vector3(0, 0, -90));
-		rb.velocity = (transform.right * 2);
+		rb.velocity = (transform.right * throwForce);
 		sounds = GetComponents<AudioSource>();
 		audio1 = sounds[0];
 		audio2 = sounds[1];

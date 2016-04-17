@@ -176,7 +176,7 @@ public class CharacterSelect : MonoBehaviour {
 		gunnerbutton = "Select";
 		if (GUI.Button(new Rect(329, 170, 100, 25) ,(gunnerbutton)))
 		{
-            PlayerPrefs.SetString("Class", "GunnerIdle");
+            PlayerPrefs.SetString("Class", "Gunner");
             PhotonNetwork.JoinOrCreateRoom (PlayerPrefs.GetString ("roomName"), new RoomOptions () { maxPlayers = 4 }, null);
 			
 		}
