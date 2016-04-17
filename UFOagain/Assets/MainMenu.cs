@@ -3,6 +3,7 @@ using System.Collections;
 
 public class MainMenu : MonoBehaviour {
     public GUISkin Skin;
+    public Texture logoTexture;
 
     public void Awake()
     {
@@ -24,15 +25,10 @@ public class MainMenu : MonoBehaviour {
     private void WindowFunction(int id)
     {
 
-        Rect content = new Rect(28, 99, 435, 320);
+        Rect content = new Rect(28, 90, 435, 320);
         GUILayout.BeginArea(content);
-        GUILayout.Space(50);
-        GUILayout.BeginHorizontal();
-        GUILayout.FlexibleSpace();
-        GUILayout.Label("Friend and Foe");
-        GUILayout.FlexibleSpace();
-        GUILayout.EndHorizontal();
-        GUILayout.Space(40);
+        GUI.DrawTexture(new Rect(143, 0, 150, 162), logoTexture);
+        GUILayout.Space(165);
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
         if (GUILayout.Button("Start Game", GUILayout.Width(125)))

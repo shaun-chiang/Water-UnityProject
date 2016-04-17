@@ -3,8 +3,7 @@ using System.Collections;
 
 public class ExplosiveCharge : MonoBehaviour {
 
-    public int dmg = 10;
-    public int throwForce = 7;
+	public int dmg=10;
 
 	private Rigidbody2D rb;
 	private int id = 0;
@@ -14,11 +13,13 @@ public class ExplosiveCharge : MonoBehaviour {
 	public AudioSource[] sounds;
 
 
+
 	void Start ()
 	{
+		
 		rb = this.GetComponent<Rigidbody2D>();
 		transform.Rotate(new Vector3(0, 0, -90));
-		rb.velocity = (transform.right * throwForce);
+		rb.velocity = (transform.right * 2);
 		sounds = GetComponents<AudioSource>();
 		audio1 = sounds[0];
 		audio2 = sounds[1];
@@ -26,14 +27,14 @@ public class ExplosiveCharge : MonoBehaviour {
 
 	void FixedUpdate ()
 	{
-		
+		StartCoroutine (shotwait ());
 	}
 
 	void OnTriggerEnter2D(Collider2D other) 
 	{
 		
 
-		if (other.gameObject.tag=="Enemy")
+		/*if (other.gameObject.tag=="Enemy")
 		{
 			//EnemyHealth hscript =other.gameObject.GetComponent<EnemyHealth>();
 			//hscript.Damage(dmg);
@@ -44,7 +45,7 @@ public class ExplosiveCharge : MonoBehaviour {
 
 			Destroy(this.gameObject,1);
 			//StartCoroutine(shotwait());
-		}
+		}*/
 	}
 
 	public int getId()
@@ -54,14 +55,20 @@ public class ExplosiveCharge : MonoBehaviour {
 
 	IEnumerator shotwait()
 	{
-		yield return new WaitForSeconds(13);
+		yield return new WaitForSeconds(3f);
+		radialAoe(this.GetComponent<CircleCollider2D>());
+		GetComponent<Animator> ().SetBool ("isSuccessfulhit", true);
+		audio2.Play();
+		yield return new WaitForSeconds(1f);
+
 		Destroy(gameObject);
 	}
 
 	void radialAoe(CircleCollider2D coll ) {
-		Vector2 center = coll.offset;
+		Vector2 center = coll.transform.position;
+		//Debug.LogError (center);
 
-		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+		//GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		//foreach(GameObject enemy in enemies) {
 			Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, blastRadius);
 			

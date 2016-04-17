@@ -61,6 +61,12 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Pathfinding.Ionic.Zip.Reduced">
       <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
@@ -159,7 +165,9 @@
     <Compile Include="Assets\AstarPathfindingProject\Utilities\ProfileHelper.cs" />
     <Compile Include="Assets\AstarPathfindingProject\Utilities\UnityReferenceHelper.cs" />
     <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
+    <Compile Include="Assets\CamShakeSimple.cs" />
     <Compile Include="Assets\CharacterSelect.cs" />
+    <Compile Include="Assets\CompanyLogo.cs" />
     <Compile Include="Assets\Fading.cs" />
     <Compile Include="Assets\Hafiz&apos;s Stuff\GunnerSpriteUpdate\Character\idle\PlayerMovement.cs" />
     <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Runtime\ImportBehaviour.cs" />
@@ -168,10 +176,12 @@
     <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Runtime\TiledInitialShaderProperties.cs" />
     <Compile Include="Assets\Hafiz&apos;s Stuff\Tiled2Unity\Scripts\Runtime\TiledMap.cs" />
     <Compile Include="Assets\HelpScreen.cs" />
+    <Compile Include="Assets\Initialise.cs" />
     <Compile Include="Assets\MainMenu.cs" />
     <Compile Include="Assets\MusicSingleton.cs" />
     <Compile Include="Assets\OnPickedUp.cs" />
     <Compile Include="Assets\OnPickup.cs" />
+    <Compile Include="Assets\PauseButton.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />
     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs" />
@@ -234,10 +244,12 @@
     <Compile Include="Assets\PlayerInstantiate.cs" />
     <Compile Include="Assets\RoomBrowser.cs" />
     <Compile Include="Assets\Scripts\ArcherPiercing.cs" />
+    <Compile Include="Assets\Scripts\ArrowRain.cs" />
     <Compile Include="Assets\Scripts\CameraFollowerScript.cs" />
     <Compile Include="Assets\Scripts\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\EnemyMove.cs" />
     <Compile Include="Assets\Scripts\ExplosiveCharge.cs" />
+    <Compile Include="Assets\Scripts\ExplosiveShot.cs" />
     <Compile Include="Assets\Scripts\FinalGambit2.cs" />
     <Compile Include="Assets\Scripts\FireballAOEScript.cs" />
     <Compile Include="Assets\Scripts\HealthScript.cs" />
@@ -250,6 +262,7 @@
     <Compile Include="Assets\Scripts\SpawnEnemyScript.cs" />
     <Compile Include="Assets\Scripts\WallTrigger.cs" />
     <Compile Include="Assets\Scripts\WeaponScript.cs" />
+    <Compile Include="Assets\Shop.cs" />
     <Compile Include="Assets\TimerCondition.cs" />
     <Compile Include="Assets\levelloader.cs" />
   </ItemGroup>

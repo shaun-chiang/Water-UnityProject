@@ -27,16 +27,13 @@ public class FinalGambit2 : MonoBehaviour {
 		//go = false;
 		transform.Rotate(new Vector3(0, 0, -90));
 		fireInstantiate ();
-		StartCoroutine (sleepy());
+		//StartCoroutine (sleepy());
 
 		//go = true;
 		/*for (int i = 0; i < amt; i++) {
 			//Rigidbody2D clone = (Rigidbody2D)Instantiate (rb, transform.position, transform.rotation);
 			Rigidbody clone = (Rigidbody) Instantiate(rb, transform.position, transform.rotation);
-
 			clone.velocity = (transform.right * laserSpeed);
-
-
 		}	*/
 
 
@@ -44,7 +41,7 @@ public class FinalGambit2 : MonoBehaviour {
 
 
 
-		Destroy(gameObject,1);
+		Destroy(gameObject,0.1f);
 	}
 
 	// Update is called once per frame
@@ -58,54 +55,45 @@ public class FinalGambit2 : MonoBehaviour {
 
 		//rb.velocity = (transform.right * laserSpeed);
 		//if (go) {
-			//rb.velocity = (transform.right * laserSpeed);
-			//Debug.LogError ("1");
-			//Rigidbody2D bullet = (Rigidbody2D)Instantiate(rb, transform.position, transform.rotation);
-			//bullet.transform.Rotate(0,0,-45*i);
+		//rb.velocity = (transform.right * laserSpeed);
+		//Debug.LogError ("1");
+		//Rigidbody2D bullet = (Rigidbody2D)Instantiate(rb, transform.position, transform.rotation);
+		//bullet.transform.Rotate(0,0,-45*i);
 
-			//GameObject bullet =(GameObject) Instantiate (rb.gameObject, transform.position, transform.rotation);
-			//bullet.transform.Rotate(0,0,-45*i);;
+		//GameObject bullet =(GameObject) Instantiate (rb.gameObject, transform.position, transform.rotation);
+		//bullet.transform.Rotate(0,0,-45*i);;
 
-			//i += 0.1f;
-			//bullet.velocity =(transform.right * laserSpeed);
-			//rb.velocity =(transform.right * laserSpeed);
-
-
-			//bullet.velocity =(transform.right * laserSpeed);
+		//i += 0.1f;
+		//bullet.velocity =(transform.right * laserSpeed);
+		//rb.velocity =(transform.right * laserSpeed);
 
 
-			//bullet.AddForce(bullet.transform.forward *6000); 
-			//rb.AddForce(bullet.transform.forward *6000); 
-			/*GameObject player = GameObject.FindWithTag("Player");
+		//bullet.velocity =(transform.right * laserSpeed);
+
+
+		//bullet.AddForce(bullet.transform.forward *6000); 
+		//rb.AddForce(bullet.transform.forward *6000); 
+		/*GameObject player = GameObject.FindWithTag("Player");
 			//Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
 			//GameObject obj = (GameObject)Instantiate(rb.gameObject, new Vector3(200,-200,300), transform.rotation);
-
-
 			float perBulletAngle = spreadAngle / (amt - 1);
 			float startAngle = spreadAngle * -0.5f;
-
 			for (int i = 0; i <amt; i++)
 			{
 				GameObject obj = (GameObject)Instantiate(rb.gameObject, player.transform.position, transform.rotation);
 				obj.transform.Rotate(Vector3.forward, startAngle + i * perBulletAngle);
 				obj.GetComponent<Rigidbody2D>().AddForce(obj.GetComponent<Rigidbody2D>().transform.forward *6000); 
-
 			}
-
 			go = false;
-
 			//Debug.LogError ("2");
 		//}
-
 		//rb.velocity = (transform.right * laserSpeed);
 		/*for (int i = 0; i < rbarray.Length; i++) {
 			if (rbarray [i] != null) {
 				rbarray [i].MovePosition (new Vector2 (0, 5*i));
 				rbarray[i].velocity = (transform.right * laserSpeed);
 			}
-
 		}
-
 	}*/
 	}
 
@@ -127,14 +115,14 @@ public class FinalGambit2 : MonoBehaviour {
 		//Debug.LogError (otherCollider+" enter");
 		WeaponScript ws = otherCollider.GetComponent<WeaponScript>();
 
-			go = true;
-			//Debug.LogError ("3");
-			Destroy(GetComponent<Collider2D>());
-			//shot.enabled = false;
-			laserSpeed = 0;
-			StartCoroutine(shotwait());
-			//Destroy(shot.gameObject);
-		
+		go = true;
+		//Debug.LogError ("3");
+		Destroy(GetComponent<Collider2D>());
+		//shot.enabled = false;
+		laserSpeed = 0;
+		StartCoroutine(shotwait());
+		//Destroy(shot.gameObject);
+
 
 	}
 
@@ -151,26 +139,29 @@ public class FinalGambit2 : MonoBehaviour {
 
 		//for (int k = 0; k < 4; k++) {
 
-			GameObject player = GameObject.FindWithTag ("Player");
-			//Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
-			//GameObject obj = (GameObject)Instantiate(rb.gameObject, new Vector3(200,-200,300), transform.rotation);
+		//GameObject player = GameObject.FindWithTag ("Player");
+		//Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
+		//GameObject obj = (GameObject)Instantiate(rb.gameObject, new Vector3(200,-200,300), transform.rotation);
 
 
-			float perBulletAngle = spreadAngle / (amt - 1);
-			float startAngle = spreadAngle * -0.5f;
+		float perBulletAngle = spreadAngle / (amt - 1);
+		float startAngle = spreadAngle * -0.5f;
 
-			for (int i = 0; i < amt; i++) {
-				GameObject obj = (GameObject)Instantiate (rb.gameObject, player.transform.position, transform.rotation);
-				obj.transform.Rotate (Vector3.forward, startAngle + i * perBulletAngle);
-				Destroy (obj.GetComponent<FinalGambit2> ());
+		for (int i = 0; i < amt; i++) {
+			GameObject obj = (GameObject)Instantiate (rb.gameObject, transform.position, transform.rotation);
+			obj.transform.Rotate (Vector3.forward, startAngle + i * perBulletAngle);
+			Destroy (obj.GetComponent<FinalGambit2> ());
 
-				obj.AddComponent<Shot_gambit> ();
-				//obj.GetComponent<Shot> ().laserSpeed = 600;
+			obj.AddComponent<BoxCollider2D> ();
+			obj.GetComponent<BoxCollider2D> ().isTrigger = true;
+			obj.GetComponent<BoxCollider2D> ().size = new Vector2 (0.5f, 0.5f);
+			obj.AddComponent<Shot_gambit> ();
+			//obj.GetComponent<Shot> ().laserSpeed = 600;
 
 
-			}
+		}
 
-			
+
 
 		//}
 	}

@@ -90,7 +90,7 @@ public class TimerCondition : MonoBehaviour {
         }
         else { 
         // simple gui for output
-        GUILayout.BeginArea(new Rect(336, 2, 150, 300));
+        GUILayout.BeginArea(new Rect(316, 2, 150, 300));
         GUILayout.Label(string.Format("Remaining: {0:0}", remainingTime));
         /*if (GUILayout.Button("new round"))
         {

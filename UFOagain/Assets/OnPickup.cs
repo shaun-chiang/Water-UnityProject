@@ -7,8 +7,8 @@ public class OnPickup : MonoBehaviour {
     {
         if (item.PickupIsMine)
         {
-            Debug.Log("I picked up something. That's a score!");
-            PhotonNetwork.player.AddScore(1);
+            Debug.Log(PhotonNetwork.player.name+" score :" +PhotonNetwork.player.GetScore());
+            PhotonNetwork.player.AddScore(10);
         }
         else
         {

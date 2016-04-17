@@ -80,8 +80,11 @@ public class CharacterSelect : MonoBehaviour {
 		if (GUI.Button(new Rect(13, 170, 100, 25) ,(archerbutton)))
 		{
             PlayerPrefs.SetString("Class", "Archer");
+            PlayerPrefs.SetInt("Skill1Level", 0);
+            PlayerPrefs.SetInt("Skill2Level", 0);
+            PlayerPrefs.SetInt("Skill3Level", 0);
+            PlayerPrefs.SetInt("SupportLevel", 0);
             PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("roomName"), new RoomOptions() { maxPlayers = 4 }, null);
-
         }
         //mage
         GUI.Box(new Rect(120,0,95,208),"");
@@ -112,6 +115,10 @@ public class CharacterSelect : MonoBehaviour {
 		if (GUI.Button(new Rect(118, 170, 100, 25) ,(magebutton)))
         {
             PlayerPrefs.SetString("Class", "Mage");
+            PlayerPrefs.SetInt("Skill1Level", 0);
+            PlayerPrefs.SetInt("Skill2Level", 0);
+            PlayerPrefs.SetInt("Skill3Level", 0);
+            PlayerPrefs.SetInt("SupportLevel", 0);
             PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("roomName"), new RoomOptions() { maxPlayers = 4 }, null);
 
         }
@@ -144,7 +151,11 @@ public class CharacterSelect : MonoBehaviour {
 		if (GUI.Button(new Rect(224, 170, 100, 25) ,(paladinbutton)))
 		{
 
-            PlayerPrefs.SetString("Class", "Paladin"); //for now, change to paladin later
+            PlayerPrefs.SetString("Class", "Paladin"); 
+            PlayerPrefs.SetInt("Skill1Level", 0);
+            PlayerPrefs.SetInt("Skill2Level", 0);
+            PlayerPrefs.SetInt("Skill3Level", 0);
+            PlayerPrefs.SetInt("SupportLevel", 0);
             PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("roomName"), new RoomOptions() { maxPlayers = 4 }, null);
 
         }
@@ -177,7 +188,11 @@ public class CharacterSelect : MonoBehaviour {
 		if (GUI.Button(new Rect(329, 170, 100, 25) ,(gunnerbutton)))
 		{
             PlayerPrefs.SetString("Class", "Gunner");
-            PhotonNetwork.JoinOrCreateRoom (PlayerPrefs.GetString ("roomName"), new RoomOptions () { maxPlayers = 4 }, null);
+            PlayerPrefs.SetInt("Skill1Level", 0);
+            PlayerPrefs.SetInt("Skill2Level", 0);
+            PlayerPrefs.SetInt("Skill3Level", 0);
+            PlayerPrefs.SetInt("SupportLevel", 0);
+            PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("roomName"), new RoomOptions() { maxPlayers = 4 }, null);
 			
 		}
 		GUILayout.EndArea();
