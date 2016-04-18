@@ -21,6 +21,7 @@ public class MainMenu : MonoBehaviour {
         //WindowFunction(0);
 
         GUI.Window(0, content, WindowFunction, "Choose a character");
+        if (Input.GetKeyDown(KeyCode.Escape)) { Application.Quit(); }
     }
     private void WindowFunction(int id)
     {
@@ -52,5 +53,6 @@ public class MainMenu : MonoBehaviour {
 
 
     }
+
 
 }

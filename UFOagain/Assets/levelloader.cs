@@ -3,11 +3,70 @@ using System.Collections;
 
 public class levelloader : MonoBehaviour {
     public GUISkin Skin;
-    IEnumerator Start()
+    private string NextScene;
+    void Start()
     {
-        Debug.Log("started preload");
-        AsyncOperation async = Application.LoadLevelAsync(PlayerPrefs.GetString("NextScene"));
-        yield return async;
+        int current = PlayerPrefs.GetInt("NextScene") + 1;
+        Debug.Log("current: " + current);
+        PlayerPrefs.SetInt("NextScene", current);
+        int currentlevel = PlayerPrefs.GetInt("NextScene");
+        if ((currentlevel==0)|(currentlevel==2)|(currentlevel==4)|(currentlevel==6))
+        {
+            NextScene = "WaitingRoomShop";
+        } else if ((currentlevel == 1))
+        {
+            int randomNumber = Random.Range(1, 1);
+            if (randomNumber==1)
+            {
+                NextScene = "ongoing";
+            }else if (randomNumber == 2)
+            {
+                NextScene = "Level 1B";
+            }
+            else if (randomNumber == 3)
+            {
+                NextScene = "Level 1C";
+            }
+        }
+        else if ((currentlevel == 3))
+        {
+            int randomNumber = Random.Range(1, 3);
+            if (randomNumber == 1)
+            {
+                NextScene = "Level 2A";
+            }
+            else if (randomNumber == 2)
+            {
+                NextScene = "Level 2B";
+            }
+            else if (randomNumber == 3)
+            {
+                NextScene = "Level 2C";
+            }
+        }
+        else if ((currentlevel == 5))
+        {
+            int randomNumber = Random.Range(1, 3);
+            if (randomNumber == 1)
+            {
+                NextScene = "Level 3A";
+            }
+            else if (randomNumber == 2)
+            {
+                NextScene = "Level 3B";
+            }
+            else if (randomNumber == 3)
+            {
+                NextScene = "Level 3C";
+            }
+        }
+        else if ((currentlevel == 7))
+        {
+            NextScene = "FinalArena";
+        }
+        //AsyncOperation async = Application.LoadLevelAsync(NextScene);
+        //yield return async;
+        PhotonNetwork.LoadLevel(NextScene);
         Debug.Log("Loading complete");
     }
     void OnGUI()

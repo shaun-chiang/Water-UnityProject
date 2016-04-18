@@ -35,7 +35,7 @@ public class HelpScreen : MonoBehaviour {
         GUILayout.Space(100);
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        if (GUILayout.Button("Back", GUILayout.Width(125)))
+        if (GUILayout.Button("Back", GUILayout.Width(125))|Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Going back to main menu!");
             PhotonNetwork.LoadLevel("Main Menu");

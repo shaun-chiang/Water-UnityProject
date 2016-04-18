@@ -10,10 +10,7 @@ public class RoomBrowser : MonoBehaviour
     private Vector2 scrollPos = Vector2.zero;
 
     private bool connectFailed = false;
-
-    public static readonly string SceneNameMenu = "NetworkLobby";
-
-    public static readonly string SceneNameGame = "WaitingRoom";
+    
 
     private string errorDialog;
     private double timeToClearDialog;
@@ -55,6 +52,7 @@ public class RoomBrowser : MonoBehaviour
 
     public void OnGUI()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) { PhotonNetwork.LoadLevel("Main Menu"); }
         GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(Screen.width / 480.0f, Screen.height / 320.0f, 1));
         if (this.Skin != null)
         {
@@ -131,10 +129,11 @@ public class RoomBrowser : MonoBehaviour
         GUILayout.Label("Roomname:", GUILayout.Width(150));
         this.roomName = GUILayout.TextField(this.roomName);
 
-        if (GUILayout.Button("Create Room", GUILayout.Width(125)))
+        if (GUILayout.Button("Create/Join Room", GUILayout.Width(150)))
         {
 			PlayerPrefs.SetString ("roomName", this.roomName);
-			PhotonNetwork.LoadLevel(SceneNameGame);
+            
+            PhotonNetwork.LoadLevel("WaitingRoom");
         }
 
         GUILayout.EndHorizontal();
@@ -166,7 +165,7 @@ public class RoomBrowser : MonoBehaviour
             GUILayout.Label(PhotonNetwork.countOfPlayers + " online in " + PhotonNetwork.countOfRooms + " rooms.");
         }
      
-        if (GUILayout.Button("Join Random", GUILayout.Width(125)))
+        /*if (GUILayout.Button("Join Random", GUILayout.Width(125)))
         {
             PhotonNetwork.JoinRandomRoom();
         }
@@ -174,7 +173,7 @@ public class RoomBrowser : MonoBehaviour
         {
 			PlayerPrefs.SetString("roomName", this.roomName);
 			PhotonNetwork.JoinRoom(PlayerPrefs.GetString("roomName"));
-        }
+        }*/
 
 
         GUILayout.EndHorizontal();
@@ -197,7 +196,10 @@ public class RoomBrowser : MonoBehaviour
                 GUILayout.Label(roomInfo.name + " " + roomInfo.playerCount + "/" + roomInfo.maxPlayers);
                 if (GUILayout.Button("Join", GUILayout.Width(150)))
                 {
-                    PhotonNetwork.JoinRoom(roomInfo.name);
+                    PlayerPrefs.SetString("roomName", this.roomName);
+                    
+                    PhotonNetwork.LoadLevel("WaitingRoom");
+
                 }
 
                 GUILayout.EndHorizontal();

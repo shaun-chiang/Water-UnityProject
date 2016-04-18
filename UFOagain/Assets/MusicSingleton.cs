@@ -42,7 +42,6 @@ public class MusicSingleton : MonoBehaviour {
 	void OnLevelWasLoaded(int level)
     {
         Debug.Log("Level: "+level);
-        Debug.Log("Current: "+currentsong);
         if ((level==1)&&(currentsong!=1)) //Main menu scene
         {
             currentsong = 1;
@@ -94,5 +93,8 @@ public class MusicSingleton : MonoBehaviour {
 
         //from here, add the relevant level scene and play correct music
     }
-	
+    void OnApplicationQuit()
+    {
+        PhotonNetwork.LeaveRoom();
+    }
 }

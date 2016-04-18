@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class CharacterSelect : MonoBehaviour {
 
@@ -12,6 +13,7 @@ public class CharacterSelect : MonoBehaviour {
 	private string magebutton;
 	private string gunnerbutton;
 	private string paladinbutton;
+    //private bool roomExists=false;
 
     public static readonly string SceneNameMenu = "WaitingRoom";
     
@@ -20,7 +22,8 @@ public class CharacterSelect : MonoBehaviour {
 
     void Start()
     {
-        PlayerPrefs.SetString("NextScene", "ongoing");
+        PlayerPrefs.SetInt("NextScene", -1);
+        
     }
 
     public void Awake()
@@ -29,6 +32,7 @@ public class CharacterSelect : MonoBehaviour {
 
     public void OnGUI()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) { PhotonNetwork.LoadLevel("NetworkLobby"); }
         GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(Screen.width / 480.0f, Screen.height / 320.0f, 1));
         if (this.Skin != null)
         {
@@ -42,7 +46,12 @@ public class CharacterSelect : MonoBehaviour {
     }
     private void WindowFunction(int id)
     {
-
+        /*foreach (RoomInfo room in PhotonNetwork.GetRoomList())
+        {
+            if (PlayerPrefs.GetString("roomName").Equals(room.name)) {
+                roomExists = true;
+            }
+        }*/
         Rect content = new Rect(28, 99, 435, 320);
         GUILayout.BeginArea(content);
 		GUI.DrawTexture(new Rect(22,8,80,80),archerTexture);
@@ -55,56 +64,57 @@ public class CharacterSelect : MonoBehaviour {
 		GUI.Box(new Rect(15,0,95,208),"");
 		GUI.Label (new Rect (5, 85, 115, 30), "Archer");
 		//draw hp
-		GUI.TextField (new Rect (20, 110, 30, 30), "HP",GUI.skin.FindStyle("PlainText"));
+		GUI.Label (new Rect (20, 110, 30, 30), "HP",GUI.skin.FindStyle("PlainText"));
 		GUI.Toggle(new Rect (45, 110, 10, 10),true,"");
 		GUI.Toggle(new Rect (57, 110, 10, 10),true,"");
 		GUI.Toggle(new Rect (69, 110, 10, 10),true,"");
 		GUI.Toggle(new Rect (81, 110, 10, 10),false,"");
 		GUI.Toggle(new Rect (93, 110, 10, 10),false,"");
 		//draw atk
-		GUI.TextField (new Rect (20, 125, 30, 30), "ATK",GUI.skin.FindStyle("PlainText"));
+		GUI.Label (new Rect (20, 125, 30, 30), "ATK",GUI.skin.FindStyle("PlainText"));
 		GUI.Toggle(new Rect (45, 125, 10, 10),true,"");
 		GUI.Toggle(new Rect (57, 125, 10, 10),true,"");
 		GUI.Toggle(new Rect (69, 125, 10, 10),true,"");
 		GUI.Toggle(new Rect (81, 125, 10, 10),true,"");
 		GUI.Toggle(new Rect (93, 125, 10, 10),false,"");
 		//draw rng
-		GUI.TextField (new Rect (20, 140, 30, 30), "RNG",GUI.skin.FindStyle("PlainText"));
+		GUI.Label (new Rect (20, 140, 30, 30), "RNG",GUI.skin.FindStyle("PlainText"));
 		GUI.Toggle(new Rect (45, 140, 10, 10),true,"");
 		GUI.Toggle(new Rect (57, 140, 10, 10),true,"");
 		GUI.Toggle(new Rect (69, 140, 10, 10),false,"");
 		GUI.Toggle(new Rect (81, 140, 10, 10),false,"");
 		GUI.Toggle(new Rect (93, 140, 10, 10),false,"");
-		//draw button
-		archerbutton = "Select";
-		if (GUI.Button(new Rect(13, 170, 100, 25) ,(archerbutton)))
-		{
+        //draw button
+        
+        if (GUI.Button(new Rect(13, 170, 100, 25), "Select"))
+        {
             PlayerPrefs.SetString("Class", "Archer");
-            PlayerPrefs.SetInt("Skill1Level", 0);
-            PlayerPrefs.SetInt("Skill2Level", 0);
-            PlayerPrefs.SetInt("Skill3Level", 0);
-            PlayerPrefs.SetInt("SupportLevel", 0);
-            PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("roomName"), new RoomOptions() { maxPlayers = 4 }, null);
+           
+            EnterRoom();
+
         }
+
+            
+  
         //mage
         GUI.Box(new Rect(120,0,95,208),"");
 		GUI.Label (new Rect (110, 85, 115, 30), "Mage");
 		//draw hp
-		GUI.TextField (new Rect (125, 110, 30, 30), "HP",GUI.skin.FindStyle("PlainText"));
+		GUI.Label (new Rect (125, 110, 30, 30), "HP",GUI.skin.FindStyle("PlainText"));
 		GUI.Toggle(new Rect (149, 110, 10, 10),true,"");
 		GUI.Toggle(new Rect (161, 110, 10, 10),true,"");
 		GUI.Toggle(new Rect (173, 110, 10, 10),false,"");
 		GUI.Toggle(new Rect (185, 110, 10, 10),false,"");
 		GUI.Toggle(new Rect (197, 110, 10, 10),false,"");
 		//draw atk
-		GUI.TextField (new Rect (125, 125, 30, 30), "ATK",GUI.skin.FindStyle("PlainText"));
+		GUI.Label (new Rect (125, 125, 30, 30), "ATK",GUI.skin.FindStyle("PlainText"));
 		GUI.Toggle(new Rect (149, 125, 10, 10),true,"");
 		GUI.Toggle(new Rect (161, 125, 10, 10),true,"");
 		GUI.Toggle(new Rect (173, 125, 10, 10),true,"");
 		GUI.Toggle(new Rect (185, 125, 10, 10),true,"");
 		GUI.Toggle(new Rect (197, 125, 10, 10),false,"");
 		//draw rng
-		GUI.TextField (new Rect (125, 140, 30, 30), "RNG",GUI.skin.FindStyle("PlainText"));
+		GUI.Label (new Rect (125, 140, 30, 30), "RNG",GUI.skin.FindStyle("PlainText"));
 		GUI.Toggle(new Rect (149, 140, 10, 10),true,"");
 		GUI.Toggle(new Rect (161, 140, 10, 10),true,"");
 		GUI.Toggle(new Rect (173, 140, 10, 10),true,"");
@@ -115,32 +125,27 @@ public class CharacterSelect : MonoBehaviour {
 		if (GUI.Button(new Rect(118, 170, 100, 25) ,(magebutton)))
         {
             PlayerPrefs.SetString("Class", "Mage");
-            PlayerPrefs.SetInt("Skill1Level", 0);
-            PlayerPrefs.SetInt("Skill2Level", 0);
-            PlayerPrefs.SetInt("Skill3Level", 0);
-            PlayerPrefs.SetInt("SupportLevel", 0);
-            PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("roomName"), new RoomOptions() { maxPlayers = 4 }, null);
-
+             EnterRoom();
         }
         //paladin
         GUI.Box(new Rect(226,0,95,208),"");
 		GUI.Label (new Rect (216, 85, 115, 30), "Paladin");
 		//draw hp
-		GUI.TextField (new Rect (231, 110, 30, 30), "HP",GUI.skin.FindStyle("PlainText"));
+		GUI.Label (new Rect (231, 110, 30, 30), "HP",GUI.skin.FindStyle("PlainText"));
 		GUI.Toggle(new Rect (255, 110, 10, 10),true,"");
 		GUI.Toggle(new Rect (267, 110, 10, 10),true,"");
 		GUI.Toggle(new Rect (279, 110, 10, 10),true,"");
 		GUI.Toggle(new Rect (291, 110, 10, 10),true,"");
 		GUI.Toggle(new Rect (303, 110, 10, 10),false,"");
 		//draw atk
-		GUI.TextField (new Rect (231, 125, 30, 30), "ATK",GUI.skin.FindStyle("PlainText"));
+		GUI.Label (new Rect (231, 125, 30, 30), "ATK",GUI.skin.FindStyle("PlainText"));
 		GUI.Toggle(new Rect (255, 125, 10, 10),true,"");
 		GUI.Toggle(new Rect (267, 125, 10, 10),true,"");
 		GUI.Toggle(new Rect (279, 125, 10, 10),true,"");
 		GUI.Toggle(new Rect (291, 125, 10, 10),false,"");
 		GUI.Toggle(new Rect (303, 125, 10, 10),false,"");
 		//draw rng
-		GUI.TextField (new Rect (231, 140, 30, 30), "RNG",GUI.skin.FindStyle("PlainText"));
+		GUI.Label (new Rect (231, 140, 30, 30), "RNG",GUI.skin.FindStyle("PlainText"));
 		GUI.Toggle(new Rect (255, 140, 10, 10),true,"");
 		GUI.Toggle(new Rect (267, 140, 10, 10),true,"");
 		GUI.Toggle(new Rect (279, 140, 10, 10),false,"");
@@ -152,32 +157,29 @@ public class CharacterSelect : MonoBehaviour {
 		{
 
             PlayerPrefs.SetString("Class", "Paladin"); 
-            PlayerPrefs.SetInt("Skill1Level", 0);
-            PlayerPrefs.SetInt("Skill2Level", 0);
-            PlayerPrefs.SetInt("Skill3Level", 0);
-            PlayerPrefs.SetInt("SupportLevel", 0);
-            PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("roomName"), new RoomOptions() { maxPlayers = 4 }, null);
-
+            
+            
+            EnterRoom();
         }
         //gunner
         GUI.Box(new Rect(331,0,95,208),"");
 		GUI.Label (new Rect (321, 85, 115, 30), "Gunner");
 		//draw hp
-		GUI.TextField (new Rect (336, 110, 30, 30), "HP",GUI.skin.FindStyle("PlainText"));
+		GUI.Label (new Rect (336, 110, 30, 30), "HP",GUI.skin.FindStyle("PlainText"));
 		GUI.Toggle(new Rect (360, 110, 10, 10),true,"");
 		GUI.Toggle(new Rect (372, 110, 10, 10),true,"");
 		GUI.Toggle(new Rect (383, 110, 10, 10),false,"");
 		GUI.Toggle(new Rect (395, 110, 10, 10),false,"");
 		GUI.Toggle(new Rect (407, 110, 10, 10),false,"");
 		//draw atk
-		GUI.TextField (new Rect (336, 125, 30, 30), "ATK",GUI.skin.FindStyle("PlainText"));
+		GUI.Label (new Rect (336, 125, 30, 30), "ATK",GUI.skin.FindStyle("PlainText"));
 		GUI.Toggle(new Rect (360, 125, 10, 10),true,"");
 		GUI.Toggle(new Rect (372, 125, 10, 10),true,"");
 		GUI.Toggle(new Rect (383, 125, 10, 10),true,"");
 		GUI.Toggle(new Rect (395, 125, 10, 10),false,"");
 		GUI.Toggle(new Rect (407, 125, 10, 10),false,"");
 		//draw rng
-		GUI.TextField (new Rect (336, 140, 30, 30), "RNG",GUI.skin.FindStyle("PlainText"));
+		GUI.Label (new Rect (336, 140, 30, 30), "RNG",GUI.skin.FindStyle("PlainText"));
 		GUI.Toggle(new Rect (360, 140, 10, 10),true,"");
 		GUI.Toggle(new Rect (372, 140, 10, 10),true,"");
 		GUI.Toggle(new Rect (383, 140, 10, 10),true,"");
@@ -188,36 +190,48 @@ public class CharacterSelect : MonoBehaviour {
 		if (GUI.Button(new Rect(329, 170, 100, 25) ,(gunnerbutton)))
 		{
             PlayerPrefs.SetString("Class", "Gunner");
-            PlayerPrefs.SetInt("Skill1Level", 0);
-            PlayerPrefs.SetInt("Skill2Level", 0);
-            PlayerPrefs.SetInt("Skill3Level", 0);
-            PlayerPrefs.SetInt("SupportLevel", 0);
-            PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("roomName"), new RoomOptions() { maxPlayers = 4 }, null);
-			
-		}
+            EnterRoom();
+        }
 		GUILayout.EndArea();
 
 
     }
+
+    private void EnterRoom()
+    {
+        Debug.Log("PLEASE");
+        PlayerPrefs.SetInt("Skill1Level", 0);
+        PlayerPrefs.SetInt("Skill2Level", 0);
+        PlayerPrefs.SetInt("Skill3Level", 0);
+        string[] roomPropsInLobby = { "map" };
+        ExitGames.Client.Photon.Hashtable customRoomProp = new ExitGames.Client.Photon.Hashtable() { { "map", 1 } };
+        Debug.Log("Joined Room: "+PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("roomName"), new RoomOptions() { maxPlayers = 4, customRoomProperties = customRoomProp, customRoomPropertiesForLobby = roomPropsInLobby }, null));
+        
+        Debug.Log("WHY NOT");
+    }
+
     public void OnJoinedRoom()
     {
         Debug.Log("OnJoinedRoom");
-		PhotonNetwork.LoadLevel(SceneNameGame);
+        PhotonNetwork.LoadLevel(SceneNameGame);
     }
 
     public void OnPhotonCreateRoomFailed()
     {
         Debug.Log("OnPhotonCreateRoomFailed got called. This can happen if the room exists (even if not visible). Try another room name.");
+        PhotonNetwork.LoadLevel("NetworkLobby");
     }
 
     public void OnPhotonJoinRoomFailed(object[] cause)
     {
         Debug.Log("OnPhotonJoinRoomFailed got called. This can happen if the room is not existing or full or closed.");
+        PhotonNetwork.LoadLevel("NetworkLobby");
     }
 
     public void OnPhotonRandomJoinFailed()
     {
         Debug.Log("OnPhotonRandomJoinFailed got called. Happens if no room is available (or all full or invisible or closed). JoinrRandom filter-options can limit available rooms.");
+        PhotonNetwork.LoadLevel("NetworkLobby");
     }
 
     public void OnCreatedRoom()

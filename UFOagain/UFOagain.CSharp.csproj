@@ -265,6 +265,7 @@
     <Compile Include="Assets\Scripts\WeaponScript.cs" />
     <Compile Include="Assets\Shop.cs" />
     <Compile Include="Assets\TimerCondition.cs" />
+    <Compile Include="Assets\WaitingRoomShopArea.cs" />
     <Compile Include="Assets\levelloader.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -14,8 +14,7 @@ public class Shop : MonoBehaviour {
         }
         if (inShop)
         {
-            Debug.Log("In the shop!");
-            GUI.Window(0, new Rect(120, 55, 250, 210), WindowFunction, "Shop!!");
+            GUI.Window(0, new Rect(30, 0, 420, 310), WindowFunction, "Shop");
 
         }
        
@@ -25,9 +24,51 @@ public class Shop : MonoBehaviour {
         GUILayout.Space(37);
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        GUILayout.Label("Do you really want to quit?", GUI.skin.FindStyle("PlainText"));
+        GUILayout.Label(PlayerPrefs.GetString("Class"));
         GUILayout.FlexibleSpace();
         GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        GUILayout.Label("Current Gold :"+PhotonNetwork.player.GetScore(), GUI.skin.FindStyle("PlainText"));
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        GUILayout.Label("Skill 1: Level "+PlayerPrefs.GetInt("Skill1Level"), GUI.skin.FindStyle("PlainText"));
+        if ((GUILayout.Button("Buy: 100 Gold"))&&(PhotonNetwork.player.GetScore()>=100))
+        {
+            PlayerPrefs.SetInt("Skill1Level", PlayerPrefs.GetInt("Skill1Level") + 1);
+            PhotonNetwork.player.AddScore(-100);
+            Debug.Log("Bought Skill 1");
+
+        }
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        GUILayout.Label("Skill 2: Level " + PlayerPrefs.GetInt("Skill2Level"), GUI.skin.FindStyle("PlainText"));
+        if ((GUILayout.Button("Buy: 200 Gold")) && (PhotonNetwork.player.GetScore() >= 200))
+        {
+            PlayerPrefs.SetInt("Skill2Level", PlayerPrefs.GetInt("Skill2Level") + 1);
+            PhotonNetwork.player.AddScore(-200);
+            Debug.Log("Bought Skill 2");
+
+        }
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        GUILayout.Label("Skill 3: Level " + PlayerPrefs.GetInt("Skill3Level"), GUI.skin.FindStyle("PlainText"));
+        if ((GUILayout.Button("Buy: 300 Gold")) && (PhotonNetwork.player.GetScore() >= 300))
+        {
+            PlayerPrefs.SetInt("Skill3Level", PlayerPrefs.GetInt("Skill3Level") + 1);
+            PhotonNetwork.player.AddScore(-300);
+            Debug.Log("Bought Skill 3");
+
+        }
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+        /*
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Quit to Main Menu"))
         {
@@ -37,8 +78,9 @@ public class Shop : MonoBehaviour {
             PhotonNetwork.LoadLevel("InBetweenLoadingScenes");
         }
         GUILayout.EndHorizontal();
+        */
         GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Back to game"))
+        if (GUILayout.Button("Exit Shop"))
         {
             Debug.Log("IM going BACK!!!!!!!!");
             inShop = false;

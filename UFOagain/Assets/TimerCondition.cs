@@ -109,9 +109,11 @@ public class TimerCondition : MonoBehaviour {
         GUILayout.FlexibleSpace();
         GUILayout.EndHorizontal();
         GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Go to shop"))
+        if (GUILayout.Button("Go to base camp"))
         {
-            Debug.Log("IM GOING TO THE SHOP!!!!!!!!");
+            int current = PlayerPrefs.GetInt("NextScene") + 1;
+            PlayerPrefs.SetInt("NextScene", current);
+            PhotonNetwork.LoadLevel("InBetweenLoadingScenes");
         }
         GUILayout.EndHorizontal();
     }
