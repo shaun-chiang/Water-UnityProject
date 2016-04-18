@@ -2,10 +2,11 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class HealthScript : MonoBehaviour {
+public class HealthScript : MonoBehaviour
+{
 
     public int maxHp = 100;
-    public int hp = 2;
+    public int currHp = 20;
     public float playerRecoveryNo = 3f;
     public float pushbackForce = 50;
 
@@ -13,23 +14,37 @@ public class HealthScript : MonoBehaviour {
     bool isInvin = false;
 
     public SpriteRenderer healthBar;
-    private Vector2 healthScale;
-    public int barSpriteScale = 1;
+    public SpriteRenderer healthBarBg;
+    private Vector3 healthScale;
+    public int barSpriteScale;
+
+    PhotonView pView;
 
     // Use this for initialization
-    void Start () {
-        healthScale = healthBar.transform.localScale;
-        UpdateHealthBar();
+    void Start()
+    {
+        pView = GetComponent<PhotonView>();
+        if (pView.isMine)
+        {
+            healthScale = healthBar.transform.localScale;
+            UpdateHealthBar();
+        }
+        else
+        {
+            healthBar.GetComponent<Renderer>().enabled = false;
+            healthBarBg.GetComponent<Renderer>().enabled = false;
+        }
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (playerRecovery > 0)
         {
             playerRecovery -= Time.deltaTime;
         }
-	}
-        
+    }
+
     void OnCollisionEnter2D(Collision2D other)
     {
         EnemyHealth eh = other.gameObject.GetComponent<EnemyHealth>();
@@ -46,22 +61,21 @@ public class HealthScript : MonoBehaviour {
                 dir = dir * force;
                 GetComponent<Rigidbody2D>().AddForce(dir, ForceMode2D.Impulse);
             }
-               
         }
-    } 
-    
+    }
+
     public void AdjustHealth(int healthChange)
     {
         playerRecovery = playerRecoveryNo;
-        hp += healthChange;
+        currHp += healthChange;
 
-        if(hp > maxHp)
+        if (currHp > maxHp)
         {
-            hp = maxHp;
+            currHp = maxHp;
         }
-        else if (hp <= 0)
+        else if (currHp <= 0)
         {
-            hp = 0;
+            currHp = 0;
             Destroy(gameObject.GetComponent<Collider2D>());
             GetComponent<Animator>().SetBool("isDead", true);
             Destroy(gameObject.GetComponent<PlayerController>());
@@ -78,18 +92,26 @@ public class HealthScript : MonoBehaviour {
 
     void UpdateHealthBar()
     {
-        healthBar.transform.localScale = new Vector2(healthScale.x * hp * 0.01f, barSpriteScale);
+        if (pView.isMine)
+        {
+            healthBar.transform.localScale = new Vector3(healthScale.x * currHp * 0.01f, barSpriteScale, 1);
+        }
+        else
+        {
+            healthBar.GetComponent<Renderer>().enabled = false;
+            healthBarBg.GetComponent<Renderer>().enabled = false;
+        }
     }
 
     IEnumerator wait()
     {
         yield return new WaitForSeconds(1);
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
     }
 
     IEnumerator flash()
     {
-        for (int i = 0; i < playerRecoveryNo/0.2; i++)
+        for (int i = 0; i < playerRecoveryNo / 0.2; i++)
         {
             GetComponent<SpriteRenderer>().enabled = true;
             yield return new WaitForSeconds(0.1f);
