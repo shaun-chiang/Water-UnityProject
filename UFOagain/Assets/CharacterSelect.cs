@@ -89,6 +89,7 @@ public class CharacterSelect : MonoBehaviour {
         if (GUI.Button(new Rect(13, 170, 100, 25), "Select"))
         {
             PlayerPrefs.SetString("Class", "Archer");
+            PlayerPrefs.SetInt("AHP", 100);
            
             EnterRoom();
 
@@ -125,7 +126,8 @@ public class CharacterSelect : MonoBehaviour {
 		if (GUI.Button(new Rect(118, 170, 100, 25) ,(magebutton)))
         {
             PlayerPrefs.SetString("Class", "Mage");
-             EnterRoom();
+            PlayerPrefs.SetInt("MHP", 75);
+            EnterRoom();
         }
         //paladin
         GUI.Box(new Rect(226,0,95,208),"");
@@ -156,9 +158,9 @@ public class CharacterSelect : MonoBehaviour {
 		if (GUI.Button(new Rect(224, 170, 100, 25) ,(paladinbutton)))
 		{
 
-            PlayerPrefs.SetString("Class", "Paladin"); 
-            
-            
+            PlayerPrefs.SetString("Class", "Paladin");
+            PlayerPrefs.SetInt("PHP", 125);
+
             EnterRoom();
         }
         //gunner
@@ -190,6 +192,7 @@ public class CharacterSelect : MonoBehaviour {
 		if (GUI.Button(new Rect(329, 170, 100, 25) ,(gunnerbutton)))
 		{
             PlayerPrefs.SetString("Class", "Gunner");
+            PlayerPrefs.SetInt("GHP", 75);
             EnterRoom();
         }
 		GUILayout.EndArea();
@@ -199,15 +202,11 @@ public class CharacterSelect : MonoBehaviour {
 
     private void EnterRoom()
     {
-        Debug.Log("PLEASE");
         PlayerPrefs.SetInt("Skill1Level", 0);
         PlayerPrefs.SetInt("Skill2Level", 0);
         PlayerPrefs.SetInt("Skill3Level", 0);
-        string[] roomPropsInLobby = { "map" };
-        ExitGames.Client.Photon.Hashtable customRoomProp = new ExitGames.Client.Photon.Hashtable() { { "map", 1 } };
-        Debug.Log("Joined Room: "+PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("roomName"), new RoomOptions() { maxPlayers = 4, customRoomProperties = customRoomProp, customRoomPropertiesForLobby = roomPropsInLobby }, null));
+        Debug.Log("Joined Room: "+PhotonNetwork.JoinOrCreateRoom(PlayerPrefs.GetString("roomName"), new RoomOptions() { maxPlayers = 4}, null));
         
-        Debug.Log("WHY NOT");
     }
 
     public void OnJoinedRoom()

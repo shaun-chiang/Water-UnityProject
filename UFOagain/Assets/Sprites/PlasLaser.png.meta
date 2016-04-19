@@ -1,0 +1,250 @@
+fileFormatVersion: 2
+guid: a82621a2f2c9e404e8113d54de07982d
+timeCreated: 1460804799
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PlasLaser_0
+    21300002: PlasLaser_1
+    21300004: PlasLaser_2
+    21300006: PlasLaser_3
+    21300008: PlasLaser_4
+    21300010: PlasLaser_5
+    21300012: PlasLaser_6
+    21300014: PlasLaser_7
+    21300016: PlasLaser_8
+    21300018: PlasLaser_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 200
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: PlasLaser_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 942
+        width: 228
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -102, y: 25}
+        - {x: -114, y: 21}
+        - {x: -114, y: -17}
+        - {x: -99, y: -25}
+        - {x: 114, y: -25}
+        - {x: 114, y: 25}
+    - name: PlasLaser_1
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 851
+        width: 223
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90.5, y: 31}
+        - {x: -111.5, y: 19}
+        - {x: -111.5, y: -15}
+        - {x: -110.5, y: -17}
+        - {x: -102.5, y: -27}
+        - {x: -89.5, y: -31}
+        - {x: 111.5, y: -31}
+        - {x: 111.5, y: 31}
+    - name: PlasLaser_2
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 750
+        width: 218
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36, y: 42}
+        - {x: -37, y: 40}
+        - {x: -35, y: 38}
+        - {x: -40, y: 39}
+        - {x: -88, y: 31}
+        - {x: -109, y: 16}
+        - {x: -109, y: -42}
+        - {x: 109, y: -42}
+        - {x: 109, y: 39}
+        - {x: 106, y: 42}
+    - name: PlasLaser_3
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 671
+        width: 195
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -72.5, y: 32.5}
+        - {x: -97.5, y: 22.5}
+        - {x: -97.5, y: -14.5}
+        - {x: -92.5, y: -19.5}
+        - {x: -55.5, y: -32.5}
+        - {x: 97.5, y: -32.5}
+        - {x: 97.5, y: 32.5}
+    - name: PlasLaser_4
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 579
+        width: 185
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -92.5, y: 28.5}
+        - {x: -92.5, y: -21.5}
+        - {x: -67.5, y: -38.5}
+        - {x: 92.5, y: -38.5}
+        - {x: 92.5, y: 38.5}
+        - {x: -52.5, y: 38.5}
+        - {x: -87.5, y: 35.5}
+    - name: PlasLaser_5
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 489
+        width: 146
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -46, y: 35.5}
+        - {x: -73, y: 20.5}
+        - {x: -73, y: -25.5}
+        - {x: -52, y: -35.5}
+        - {x: 73, y: -35.5}
+        - {x: 73, y: 35.5}
+    - name: PlasLaser_6
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 365
+        width: 113
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35.5, y: 39.5}
+        - {x: -56.5, y: 28.5}
+        - {x: -56.5, y: -27.5}
+        - {x: -42.5, y: -39.5}
+        - {x: 56.5, y: -39.5}
+        - {x: 56.5, y: 39.5}
+    - name: PlasLaser_7
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 258
+        width: 96
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 39.5}
+        - {x: -47, y: 30.5}
+        - {x: -48, y: 21.5}
+        - {x: -48, y: -28.5}
+        - {x: -32, y: -39.5}
+        - {x: 48, y: -39.5}
+        - {x: 48, y: 34.5}
+        - {x: 39, y: 39.5}
+    - name: PlasLaser_8
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 156
+        width: 77
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 31.5, y: 37}
+        - {x: -10.5, y: 37}
+        - {x: -37.5, y: 33}
+        - {x: -38.5, y: 30}
+        - {x: -38.5, y: -34}
+        - {x: -35.5, y: -37}
+        - {x: 38.5, y: -37}
+        - {x: 38.5, y: 29}
+    - name: PlasLaser_9
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 35
+        width: 78
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 30, y: 38}
+        - {x: -38, y: 38}
+        - {x: -39, y: 37}
+        - {x: -39, y: -29}
+        - {x: -34, y: -38}
+        - {x: 39, y: -38}
+        - {x: 39, y: 31}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

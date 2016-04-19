@@ -14,7 +14,7 @@ public class Initialise : MonoBehaviour {
         print(Time.time);
         yield return new WaitForSeconds(0.5f);
         print(Time.time);
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
  
         PhotonNetwork.LoadLevel("Main Menu");
     }

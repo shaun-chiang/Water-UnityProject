@@ -1,40 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ExplosiveCharge : MonoBehaviour {
+public class ExplosiveCharge : MonoBehaviour
+{
+    public int PrefabID;
 
-	public int dmg=10;
+    public int dmg = 10;
 
-	private Rigidbody2D rb;
-	private int id = 0;
-	public int blastRadius= 10;
-	public AudioSource audio1;
-	public AudioSource audio2;
-	public AudioSource[] sounds;
+    private Rigidbody2D rb;
+    private int id = 0;
+    public int blastRadius = 10;
+    public AudioSource audio1;
+    public AudioSource audio2;
+    public AudioSource[] sounds;
 
 
 
-	void Start ()
-	{
-		
-		rb = this.GetComponent<Rigidbody2D>();
-		transform.Rotate(new Vector3(0, 0, -90));
-		rb.velocity = (transform.right * 2);
-		sounds = GetComponents<AudioSource>();
-		audio1 = sounds[0];
-		audio2 = sounds[1];
-	}
+    void Start()
+    {
 
-	void FixedUpdate ()
-	{
-		StartCoroutine (shotwait ());
-	}
+        rb = this.GetComponent<Rigidbody2D>();
+        transform.Rotate(new Vector3(0, 0, -90));
+        rb.velocity = (transform.right * 2);
+        sounds = GetComponents<AudioSource>();
+        audio1 = sounds[0];
+        audio2 = sounds[1];
+    }
 
-	void OnTriggerEnter2D(Collider2D other) 
-	{
-		
+    void FixedUpdate()
+    {
+        StartCoroutine(shotwait());
+    }
 
-		/*if (other.gameObject.tag=="Enemy")
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+
+        /*if (other.gameObject.tag=="Enemy")
 		{
 			//EnemyHealth hscript =other.gameObject.GetComponent<EnemyHealth>();
 			//hscript.Damage(dmg);
@@ -46,44 +48,61 @@ public class ExplosiveCharge : MonoBehaviour {
 			Destroy(this.gameObject,1);
 			//StartCoroutine(shotwait());
 		}*/
-	}
+    }
 
-	public int getId()
-	{
-		return this.id;
-	}
+    public int getId()
+    {
+        return this.id;
+    }
 
-	IEnumerator shotwait()
-	{
-		yield return new WaitForSeconds(3f);
-		radialAoe(this.GetComponent<CircleCollider2D>());
-		GetComponent<Animator> ().SetBool ("isSuccessfulhit", true);
-		audio2.Play();
-		yield return new WaitForSeconds(1f);
+    IEnumerator shotwait()
+    {
+        yield return new WaitForSeconds(3f);
+        radialAoe(this.GetComponent<CircleCollider2D>());
+        GetComponent<Animator>().SetBool("isSuccessfulhit", true);
+        audio2.Play();
+        yield return new WaitForSeconds(1f);
 
-		Destroy(gameObject);
-	}
+        Destroy(gameObject);
+    }
 
-	void radialAoe(CircleCollider2D coll ) {
-		Vector2 center = coll.transform.position;
-		//Debug.LogError (center);
+    void radialAoe(CircleCollider2D coll)
+    {
+        Vector2 center = coll.transform.position;
+        //Debug.LogError (center);
 
-		//GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-		//foreach(GameObject enemy in enemies) {
-			Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, blastRadius);
-			
-			foreach(Collider2D enemy in hitColliders) {
-				
-			EnemyHealth escript = enemy.gameObject.GetComponent<EnemyHealth>();
-			    
-			if (escript != null) {
-				escript.Damage (dmg,new Vector2(1,1));
-			}
-				
-			}
-			
+        //GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //foreach(GameObject enemy in enemies) {
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, blastRadius);
 
-	}
+        foreach (Collider2D enemy in hitColliders)
+        {
+
+            EnemyHealth escript = enemy.gameObject.GetComponent<EnemyHealth>();
+
+            if (escript != null)
+            {
+                escript.Damage(dmg, new Vector2(1, 1));
+            }
+
+            if (PrefabID != enemy.gameObject.GetInstanceID())
+            {
+                HealthScript hs = enemy.gameObject.GetComponent<HealthScript>();
+                if (hs != null)
+                {
+
+                    hs.AdjustHealth(dmg * -1);
+                }
+
+
+            }
+
+        }
+
+
+    }
 
 
 }
+
+

@@ -21,7 +21,6 @@ public class PlayerInstantiate : MonoBehaviour
         {
             foreach (GameObject o in this.PrefabsToInstantiate)
             {
-                Debug.Log(PlayerPrefs.GetString("Class"));
                 if (o.name.Equals(PlayerPrefs.GetString("Class")))
                 {
                     Debug.Log("Instantiating: " + o.name);

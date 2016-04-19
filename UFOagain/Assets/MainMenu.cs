@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour {
         GUI.backgroundColor = Color.white;
         //WindowFunction(0);
 
-        GUI.Window(0, content, WindowFunction, "Choose a character");
+        GUI.Window(0, content, WindowFunction, "");
         if (Input.GetKeyDown(KeyCode.Escape)) { Application.Quit(); }
     }
     private void WindowFunction(int id)

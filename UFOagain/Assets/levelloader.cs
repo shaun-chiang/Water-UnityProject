@@ -30,7 +30,7 @@ public class levelloader : MonoBehaviour {
         }
         else if ((currentlevel == 3))
         {
-            int randomNumber = Random.Range(1, 3);
+            int randomNumber = Random.Range(1, 1);
             if (randomNumber == 1)
             {
                 NextScene = "Level 2A";
@@ -46,7 +46,7 @@ public class levelloader : MonoBehaviour {
         }
         else if ((currentlevel == 5))
         {
-            int randomNumber = Random.Range(1, 3);
+            int randomNumber = Random.Range(1, 1);
             if (randomNumber == 1)
             {
                 NextScene = "Level 3A";

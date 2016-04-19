@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class ExplosiveShot : MonoBehaviour {
-
+	public int PrefabID;
 	public int dmg=10;
 	public int laserSpeed;
 	private Rigidbody2D rb;
@@ -47,6 +47,16 @@ public class ExplosiveShot : MonoBehaviour {
 		} else if (other.gameObject.tag == "Untagged") {
 			
 			laserSpeed = 0;
+
+		}
+
+		if (PrefabID != other.gameObject.GetInstanceID ()) {
+			HealthScript hs = other.gameObject.GetComponent<HealthScript> ();
+			if (hs != null) {
+
+				hs.AdjustHealth (dmg * -1);
+			}
+
 
 		}
 	}

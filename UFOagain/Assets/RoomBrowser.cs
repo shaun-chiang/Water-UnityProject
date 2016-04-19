@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 public class RoomBrowser : MonoBehaviour
 {
     public GUISkin Skin;
-    private string roomName = "myRoom";
+    private string roomName;
 
     private Vector2 scrollPos = Vector2.zero;
 
@@ -30,6 +30,7 @@ public class RoomBrowser : MonoBehaviour
 
     public void Awake()
     {
+        roomName = ("myRoom" + Random.Range(1, 9999));
         // this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
         PhotonNetwork.automaticallySyncScene = true;
 
@@ -101,7 +102,7 @@ public class RoomBrowser : MonoBehaviour
         Rect content = new Rect(28, 99, 435, 320);
         GUILayout.BeginArea(content);
 
-        //GUILayout.Space(85);
+        GUILayout.Space(50);
 
         // Player name
         GUILayout.BeginHorizontal();
@@ -133,6 +134,7 @@ public class RoomBrowser : MonoBehaviour
         {
 			PlayerPrefs.SetString ("roomName", this.roomName);
             
+
             PhotonNetwork.LoadLevel("WaitingRoom");
         }
 
@@ -154,7 +156,7 @@ public class RoomBrowser : MonoBehaviour
         }
 
         //GUILayout.Space(15);
-
+        /*
         // Join random room
         GUILayout.BeginHorizontal();
         if ((PhotonNetwork.countOfRooms == 1))
@@ -173,7 +175,7 @@ public class RoomBrowser : MonoBehaviour
         {
 			PlayerPrefs.SetString("roomName", this.roomName);
 			PhotonNetwork.JoinRoom(PlayerPrefs.GetString("roomName"));
-        }*/
+        }
 
 
         GUILayout.EndHorizontal();
@@ -202,11 +204,12 @@ public class RoomBrowser : MonoBehaviour
 
                 }
 
-                GUILayout.EndHorizontal();
-            }
+        GUILayout.EndHorizontal();
+        */
+            //}
 
-            GUILayout.EndScrollView();
-        }
+        //GUILayout.EndScrollView();
+        //}
 
         GUILayout.EndArea();
     }

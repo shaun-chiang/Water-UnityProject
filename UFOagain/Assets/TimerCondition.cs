@@ -6,17 +6,24 @@ using System;
 public class TimerCondition : MonoBehaviour {
 
     public GUISkin Skin;
-    public int SecondsPerTurn = 30;
+    public int SecondsPerTurn;
     public double StartTime;
     private bool gamedone = false;
     private bool startRoundWhenTimeIsSynced;
     private const string StartTimeKey = "st";
+    private bool gonextscene = false;
 
     private void StartRoundNow()
     {
+        /*
+        if (PhotonNetwork.isMasterClient)
+        {
+            this.StartRoundNow();
+        }
+        */
         // in some cases, when you enter a room, the server time is not available immediately.
         // time should be 0.0f but to make sure we detect it correctly, check for a very low value.
-        /*
+        
         if (PhotonNetwork.time < 0.0001f)
         {
             // we can only start the round when the time is available. let's check that in Update()
@@ -25,7 +32,7 @@ public class TimerCondition : MonoBehaviour {
             return;
         }
         startRoundWhenTimeIsSynced = false;
-        */
+        
 
         StartTime = PhotonNetwork.time;
         ExitGames.Client.Photon.Hashtable startTimeProp = new ExitGames.Client.Photon.Hashtable();  // only use ExitGames.Client.Photon.Hashtable for Photon
@@ -35,7 +42,7 @@ public class TimerCondition : MonoBehaviour {
 
 
     /// <summary>Called by PUN when this client entered a room (no matter if joined or created).</summary>
-    public void OnJoinedRoom()
+    public void Start()
     {
         if (PhotonNetwork.isMasterClient)
         {
@@ -49,15 +56,30 @@ public class TimerCondition : MonoBehaviour {
             Debug.Log("StartTime already set: " + PhotonNetwork.room.customProperties.ContainsKey(StartTimeKey));
         }
     }
-    void Start()
+    /// <summary>Called by PUN when new properties for the room were set (by any client in the room).</summary>
+    public void OnPhotonCustomRoomPropertiesChanged(ExitGames.Client.Photon.Hashtable propertiesThatChanged)
     {
-        if (PhotonNetwork.isMasterClient) {
-            this.StartRoundNow();
-            }
+        if (propertiesThatChanged.ContainsKey(StartTimeKey))
+        {
+            StartTime = (double)propertiesThatChanged[StartTimeKey];
+        }
     }
-
+    public void OnMasterClientSwitched(PhotonPlayer newMasterClient)
+    {
+        if (!PhotonNetwork.room.customProperties.ContainsKey(StartTimeKey))
+        {
+            Debug.Log("The new master starts a new round, cause we didn't start yet.");
+            this.StartRoundNow();
+        }
+    }
+    IEnumerator Example()
+    {
+        yield return new WaitForSeconds(3.0f);
+        gonextscene = true;
+    }
     void Update()
     {
+        
         if (startRoundWhenTimeIsSynced)
         {
             this.StartRoundNow();   // the "time is known" check is done inside the method.
@@ -79,11 +101,16 @@ public class TimerCondition : MonoBehaviour {
         double remainingTime = SecondsPerTurn - (elapsedTime % SecondsPerTurn);
         int turn = (int)(elapsedTime / SecondsPerTurn);
 
+        if (gonextscene==true)
+        {
+            PhotonNetwork.LoadLevel("InBetweenLoadingScenes");
+        }
 
         if ((remainingTime < 0.1)|(gamedone)) {
             gamedone = true;
+            StartCoroutine(Example());
             GUI.Window(0, new Rect(120,65,250,200), WindowFunction, "Level " + PlayerPrefs.GetString("Level") + " Finished!");
-            GUILayout.BeginArea(new Rect(336, 2, 150, 300));
+            GUILayout.BeginArea(new Rect(316, 2, 150, 300));
             GUILayout.Label("You Win!");
             GUILayout.EndArea();
 
@@ -111,8 +138,6 @@ public class TimerCondition : MonoBehaviour {
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Go to base camp"))
         {
-            int current = PlayerPrefs.GetInt("NextScene") + 1;
-            PlayerPrefs.SetInt("NextScene", current);
             PhotonNetwork.LoadLevel("InBetweenLoadingScenes");
         }
         GUILayout.EndHorizontal();

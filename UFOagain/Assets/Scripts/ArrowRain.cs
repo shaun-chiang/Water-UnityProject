@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class ArrowRain : MonoBehaviour {
-
+	public int PrefabID;
 	public int dmg=10;
 
 	private Rigidbody2D rb;
@@ -24,7 +24,7 @@ public class ArrowRain : MonoBehaviour {
 		//rb.MovePosition (Random.insideUnitCircle * 1);
 		transform.Rotate(new Vector3(0, 0, -90));
 		//rb.velocity = (transform.right * 2);
-
+		GetComponent<Animator> ().Play ("ArrowRainAnim");
 		/*for (int i = 0; i <= 5; i++) {
 			//rb.MovePosition (Random.insideUnitCircle * 1);
 			anim = GetComponent<Animator> ();
@@ -102,7 +102,17 @@ public class ArrowRain : MonoBehaviour {
 			EnemyHealth escript = enemy.gameObject.GetComponent<EnemyHealth>();
 
 			if (escript != null) {
-				escript.Damage (dmg,new Vector2(1,1));
+				escript.Damage (dmg, new Vector2 (1, 1));
+			} else {
+				if (PrefabID != enemy.gameObject.GetInstanceID ()) {
+					HealthScript hs = enemy.gameObject.GetComponent<HealthScript> ();
+					if (hs != null) {
+                        Debug.LogError("inside arrowrainaoe");
+						hs.AdjustHealth (dmg * -1);
+					}
+
+
+				}
 			}
 
 		}

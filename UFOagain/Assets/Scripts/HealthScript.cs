@@ -5,8 +5,9 @@ using UnityEngine.UI;
 public class HealthScript : MonoBehaviour
 {
 
-    public int maxHp = 100;
-    public int currHp = 20;
+    public int maxHp;
+    public int currHp;
+    private int newHp;
     public float playerRecoveryNo = 3f;
     public float pushbackForce = 50;
 
@@ -18,14 +19,39 @@ public class HealthScript : MonoBehaviour
     private Vector3 healthScale;
     public int barSpriteScale;
 
+    float originalValue;
+    float newValue;
+    float difference;
+
     PhotonView pView;
 
     // Use this for initialization
     void Start()
     {
+        
+        if (gameObject.name.StartsWith("Paladin"))
+        {
+            currHp = PlayerPrefs.GetInt("PHP");
+            maxHp = 125;
+        } else if (gameObject.name.StartsWith("Mage"))
+        {
+            currHp = PlayerPrefs.GetInt("MHP");
+            maxHp = 75;
+        }
+        else if (gameObject.name.StartsWith("Gunner"))
+        {
+            currHp = PlayerPrefs.GetInt("GHP");
+            maxHp = 75;
+        }
+        else if (gameObject.name.StartsWith("Archer"))
+        {
+            currHp = PlayerPrefs.GetInt("AHP");
+            maxHp = 100;
+        }
         pView = GetComponent<PhotonView>();
         if (pView.isMine)
         {
+            
             healthScale = healthBar.transform.localScale;
             UpdateHealthBar();
         }
@@ -39,6 +65,25 @@ public class HealthScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameObject.name.StartsWith("Paladin"))
+        {
+            currHp = PlayerPrefs.GetInt("PHP");
+        }
+        else if (gameObject.name.StartsWith("Mage"))
+        {
+            currHp = PlayerPrefs.GetInt("MHP");
+        }
+        else if (gameObject.name.StartsWith("Gunner"))
+        {
+            currHp = PlayerPrefs.GetInt("GHP");
+        }
+        else if (gameObject.name.StartsWith("Archer"))
+        {
+            currHp = PlayerPrefs.GetInt("AHP");
+        }
+
+        UpdateHealthBar();
+
         if (playerRecovery > 0)
         {
             playerRecovery -= Time.deltaTime;
@@ -67,18 +112,69 @@ public class HealthScript : MonoBehaviour
     public void AdjustHealth(int healthChange)
     {
         playerRecovery = playerRecoveryNo;
-        currHp += healthChange;
+        newHp = currHp + healthChange;
+        if (gameObject.name.StartsWith("Paladin"))
+        {
+            PlayerPrefs.SetInt("PHP",newHp);
+        }
+        else if (gameObject.name.StartsWith("Mage"))
+        {
+            PlayerPrefs.SetInt("MHP", newHp);
+        }
+        else if (gameObject.name.StartsWith("Gunner"))
+        {
+            PlayerPrefs.SetInt("GHP", newHp);
+        }
+        else if (gameObject.name.StartsWith("Archer"))
+        {
+            PlayerPrefs.SetInt("AHP", newHp);
+        }
 
         if (currHp > maxHp)
         {
-            currHp = maxHp;
+            newHp = maxHp;
+            if (gameObject.name.StartsWith("Paladin"))
+            {
+                PlayerPrefs.SetInt("PHP", newHp);
+            }
+            else if (gameObject.name.StartsWith("Mage"))
+            {
+                PlayerPrefs.SetInt("MHP", newHp);
+            }
+            else if (gameObject.name.StartsWith("Gunner"))
+            {
+                PlayerPrefs.SetInt("GHP", newHp);
+            }
+            else if (gameObject.name.StartsWith("Archer"))
+            {
+                PlayerPrefs.SetInt("AHP", newHp);
+            }
+            
         }
         else if (currHp <= 0)
         {
-            currHp = 0;
+            newHp = 0;
+            if (gameObject.name.StartsWith("Paladin"))
+            {
+                PlayerPrefs.SetInt("PHP", newHp);
+            }
+            else if (gameObject.name.StartsWith("Mage"))
+            {
+                PlayerPrefs.SetInt("MHP", newHp);
+            }
+            else if (gameObject.name.StartsWith("Gunner"))
+            {
+                PlayerPrefs.SetInt("GHP", newHp);
+            }
+            else if (gameObject.name.StartsWith("Archer"))
+            {
+                PlayerPrefs.SetInt("AHP", newHp);
+            }
+            
             Destroy(gameObject.GetComponent<Collider2D>());
             GetComponent<Animator>().SetBool("isDead", true);
             Destroy(gameObject.GetComponent<PlayerController>());
+            //PhotonNetwork.LoadLevel("GameOver");
             StartCoroutine(wait());
         }
         else
@@ -94,7 +190,11 @@ public class HealthScript : MonoBehaviour
     {
         if (pView.isMine)
         {
-            healthBar.transform.localScale = new Vector3(healthScale.x * currHp * 0.01f, barSpriteScale, 1);
+            originalValue = healthBar.bounds.min.x;
+            healthBar.transform.localScale = new Vector3(healthScale.x * currHp * 1.0f/maxHp, barSpriteScale, 1);
+            newValue = healthBar.bounds.min.x;
+            difference = newValue - originalValue;
+            healthBar.transform.Translate(new Vector3(-difference, 0f, 0f));
         }
         else
         {
@@ -120,6 +220,11 @@ public class HealthScript : MonoBehaviour
         }
         GetComponent<SpriteRenderer>().enabled = true;
         isInvin = false;
+    }
+
+    public bool GetInvin()
+    {
+        return isInvin;
     }
 }
 

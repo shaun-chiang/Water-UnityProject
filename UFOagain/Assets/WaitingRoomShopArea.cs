@@ -8,13 +8,17 @@ public class WaitingRoomShopArea : MonoBehaviour
     private bool readiedUp = false;
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("entered ready zone");
-        playersReady++;
+        if (other.tag.Equals("Player")) {
+            Debug.Log("entered ready zone");
+            playersReady++;
+        }
     }
     public void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("Exited ready zone");
-        playersReady--;
+        if (other.tag.Equals("Player")) {
+            Debug.Log("Exited ready zone");
+            playersReady--;
+        }
     }
     public void OnGUI()
     {
@@ -27,12 +31,14 @@ public class WaitingRoomShopArea : MonoBehaviour
         GUILayout.BeginArea(new Rect(156, 2, 300, 300));
         GUILayout.Label("Base Camp: "+playersReady+"/"+PhotonNetwork.room.playerCount+" players ready at center");
         GUILayout.EndArea();
-        if ((playersReady == PhotonNetwork.room.playerCount)|(readiedUp))
+        if ((playersReady == PhotonNetwork.room.playerCount))
         {
-            readiedUp = true;
-            PhotonNetwork.room.visible = false;
-            
-            PhotonNetwork.LoadLevel("InBetweenLoadingScenes");
+            if (PhotonNetwork.isMasterClient)
+            {
+                PhotonNetwork.room.visible = false;
+
+                PhotonNetwork.LoadLevel("InBetweenLoadingScenes");
+            }
         }
     }
 }

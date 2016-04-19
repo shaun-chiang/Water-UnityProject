@@ -4,6 +4,7 @@ using System.Collections;
 //Player Shot
 
 public class ArcherPiercing : MonoBehaviour {
+	public int PrefabID;
 	public int laserSpeed;
 	public int dmg;
 	Vector3 dir;
@@ -65,22 +66,35 @@ public class ArcherPiercing : MonoBehaviour {
 				//StartCoroutine (shotwait ());
 
 
-			} else  {
-				GetComponent<Animator> ().SetBool ("isSuccessfulhit", false);
+			}
+            else {
+                GetComponent<Animator>().SetBool("isSuccessfulhit", false);
+                var force = 40;
+                Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), otherCollider);
+                otherCollider.GetComponent<EnemyHealth>().Damage(dmg, GetComponent<Rigidbody2D>().velocity * force);
 
-				Physics2D.IgnoreCollision (this.GetComponent<Collider2D> (), otherCollider);
+                //Debug.LogError ("Ignoring");
 
-				//Debug.LogError ("Ignoring");
-
-				//passThroughCount--;
-
-				//StartCoroutine (shotwait ());
-
-
-			} 
-
+                //passThroughCount--;
+                dmg = dmg / 2;
+                //StartCoroutine (shotwait ());
 
 
+            }
+
+
+
+
+        } else {
+			if (PrefabID != otherCollider.gameObject.GetInstanceID ()) {
+				HealthScript hs = otherCollider.gameObject.GetComponent<HealthScript> ();
+				if (hs != null) {
+
+					hs.AdjustHealth (dmg * -1);
+				}
+
+
+			}
 
 		}
 	}

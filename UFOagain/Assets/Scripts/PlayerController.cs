@@ -35,9 +35,10 @@ public class PlayerController : Photon.PunBehaviour {
             bool isShooting = CrossPlatformInputManager.GetButton("Shoot");
             if (isShooting)
             {
-                WeaponScript ws = GetComponent<WeaponScript>();
+                WeaponScript ws = gameObject.GetComponent<WeaponScript>();
                 if (ws != null)
                 {
+                    
                     ws.Attack();
                 }
             }
@@ -47,6 +48,7 @@ public class PlayerController : Photon.PunBehaviour {
                 WeaponScript ws = GetComponent<WeaponScript>();
                 if (ws != null)
                 {
+                    Debug.LogError("butt1");
                     ws.Secondary1();
                 }
             }
@@ -56,7 +58,8 @@ public class PlayerController : Photon.PunBehaviour {
                 WeaponScript ws = GetComponent<WeaponScript>();
                 if (ws != null)
                 {
-                    ws.Secondary1();
+                    Debug.LogError("butt2");
+                    ws.Secondary2();
                 }
             }
 
@@ -65,7 +68,8 @@ public class PlayerController : Photon.PunBehaviour {
                 WeaponScript ws = GetComponent<WeaponScript>();
                 if (ws != null)
                 {
-                    ws.Secondary1();
+                    Debug.LogError("butt3");
+                    ws.Secondary3();
                 }
             }
         }

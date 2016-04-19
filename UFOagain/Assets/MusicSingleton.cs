@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MusicSingleton : MonoBehaviour {
+public class MusicSingleton : MonoBehaviour
+{
 
     public static MusicSingleton instance = null;
     public static MusicSingleton Instance
@@ -25,9 +26,14 @@ public class MusicSingleton : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Awake () {
+    void Awake()
+    {
+       
+            PhotonNetwork.OnEventCall += this.OnEvent;
+        
         AudioSource sound = gameObject.GetComponent<AudioSource>();
-        if ((instance != null)&& (instance!=this)) {
+        if ((instance != null) && (instance != this))
+        {
             Destroy(this.gameObject);
             return;
         }
@@ -36,21 +42,22 @@ public class MusicSingleton : MonoBehaviour {
             instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
-	}
-	
-	// Update is called once per frame
-	void OnLevelWasLoaded(int level)
+    }
+
+    // Update is called once per frame
+    void OnLevelWasLoaded(int level)
     {
-        Debug.Log("Level: "+level);
-        if ((level==1)&&(currentsong!=1)) //Main menu scene
+        Debug.Log("Level: " + level);
+        if ((level == 1) && (currentsong != 1)) //Main menu scene
         {
             currentsong = 1;
             //play main menu
             source.Stop();
             source.clip = MainMenu;
             source.Play();
-           
-        } else if ((level == 6)&&(currentsong!=2)) //waitingroomshop
+
+        }
+        else if ((level == 6) && (currentsong != 2)) //waitingroomshop
         {
             currentsong = 2;
             //play stage 1
@@ -58,7 +65,7 @@ public class MusicSingleton : MonoBehaviour {
             source.clip = WaitingRoom;
             source.Play();
         }
-        else if (((level == 7)|(level == 8)|(level==9))&&(currentsong!=3)) //stage1
+        else if (((level == 7) | (level == 8) | (level == 9)) && (currentsong != 3)) //stage1
         {
             currentsong = 3;
             //play stage 1
@@ -66,7 +73,7 @@ public class MusicSingleton : MonoBehaviour {
             source.clip = StageOne;
             source.Play();
         }
-        else if (((level == 10) | (level ==11) | (level == 12))&&(currentsong!=4)) //stage1
+        else if (((level == 10) | (level == 11) | (level == 12)) && (currentsong != 4)) //stage1
         {
             currentsong = 4;
             //play stage 2
@@ -74,7 +81,7 @@ public class MusicSingleton : MonoBehaviour {
             source.clip = StageTwo;
             source.Play();
         }
-        else if (((level == 13) | (level == 14) | (level == 15))&&(currentsong!=5)) //stage1
+        else if (((level == 13) | (level == 14) | (level == 15)) && (currentsong != 5)) //stage1
         {
             currentsong = 5;
             //play stage 1
@@ -82,7 +89,7 @@ public class MusicSingleton : MonoBehaviour {
             source.clip = StageThree;
             source.Play();
         }
-        else if ((level == 15)&&(currentsong!=6)) //stage1
+        else if ((level == 15) && (currentsong != 6)) //stage1
         {
             currentsong = 6;
             //play stage 1
@@ -96,5 +103,13 @@ public class MusicSingleton : MonoBehaviour {
     void OnApplicationQuit()
     {
         PhotonNetwork.LeaveRoom();
+    }
+    
+    private void OnEvent(byte eventcode, object content, int senderid)
+    {
+        if ((eventcode == 1) && (((int)content == 1)))
+        {
+            Debug.LogError("GAME OVER GAME OVER GAME OVER");
+        }
     }
 }

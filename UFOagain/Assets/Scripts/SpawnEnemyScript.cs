@@ -4,6 +4,7 @@ using System.Collections;
 public class SpawnEnemyScript : MonoBehaviour {
 
     public GameObject enemy;
+    public GameObject enemy2;
     //public GameObject[] enemies;
     public Transform[] spawnPoints;
     public float spawnCooldown = 5f;
@@ -26,18 +27,18 @@ public class SpawnEnemyScript : MonoBehaviour {
 
             else if (spawnCooldown <= 0)
             {
-                spawn();
+                spawn(enemy.name);
             }
         }
 
         
 	}
 
-    void spawn()
+    void spawn(string enemyname)
     {
         currEnemyNo += 1;
         spawnCooldown = 3f;
         int index = Random.Range(0, spawnPoints.Length);
-        PhotonNetwork.Instantiate(enemy.name, spawnPoints[index].position, spawnPoints[index].rotation, 0);
+        PhotonNetwork.Instantiate(enemyname, spawnPoints[index].position, spawnPoints[index].rotation, 0);
     }
 }

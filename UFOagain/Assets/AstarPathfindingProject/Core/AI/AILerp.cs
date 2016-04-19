@@ -47,6 +47,7 @@ public class AILerp : MonoBehaviour {
 
 	/** Speed in world units */
 	public float speed = 3;
+    public float pushforce = 10;
 
 	/** If true, the AI will rotate to face the movement direction */
 	public bool enableRotation = true;
@@ -55,7 +56,7 @@ public class AILerp : MonoBehaviour {
 	public bool rotationIn2D = false;
 
 	/** How quickly to rotate */
-	public float rotationSpeed = 10;
+	public float rotationSpeed = 2;
 
 	/** If true, some interpolation will be done when a new path has been calculated.
 	 * This is used to avoid short distance teleportation.
@@ -386,6 +387,7 @@ public class AILerp : MonoBehaviour {
 		}
 	}
 
+    
     protected virtual void FixedUpdate()
     {
         if (playerLock <= 0)
@@ -418,8 +420,32 @@ public class AILerp : MonoBehaviour {
 
             Vector2 dir = (Vector2)nextPos - (Vector2)tr.position;
             dir.Normalize();
-            GetComponent<Rigidbody2D>().AddForce(dir * 10);
-        }
+            GetComponent<Rigidbody2D>().AddForce(dir * pushforce);
+
+            /*
+            FatsoAttackScript2 fat = GetComponent<FatsoAttackScript2>();
+            //fatso
+            if (fat != null)
+            {
+                if (Vector2.Distance(transform.position, target.position) <= 3)
+                {
+                    ;
+                }
+                else
+                {
+                    Vector2 dir = (Vector2)nextPos - (Vector2)tr.position;
+                    dir.Normalize();
+                    GetComponent<Rigidbody2D>().AddForce(dir * 10);
+                }
+            }
+            //Everything else
+            else
+            {
+                Vector2 dir = (Vector2)nextPos - (Vector2)tr.position;
+                dir.Normalize();
+                GetComponent<Rigidbody2D>().AddForce(dir * 10);
+            } */
+        } 
     }
 
     /** Calculate the AI's next position (one frame in the future).

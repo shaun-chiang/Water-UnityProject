@@ -4,6 +4,7 @@ using System.Collections;
 //Player Shot
 
 public class FinalGambit2 : MonoBehaviour {
+	public int PrefabID;
 	public int laserSpeed;
 	public int dmg;
 	Vector3 dir;
@@ -53,48 +54,7 @@ public class FinalGambit2 : MonoBehaviour {
 	void FixedUpdate()
 	{
 
-		//rb.velocity = (transform.right * laserSpeed);
-		//if (go) {
-		//rb.velocity = (transform.right * laserSpeed);
-		//Debug.LogError ("1");
-		//Rigidbody2D bullet = (Rigidbody2D)Instantiate(rb, transform.position, transform.rotation);
-		//bullet.transform.Rotate(0,0,-45*i);
-
-		//GameObject bullet =(GameObject) Instantiate (rb.gameObject, transform.position, transform.rotation);
-		//bullet.transform.Rotate(0,0,-45*i);;
-
-		//i += 0.1f;
-		//bullet.velocity =(transform.right * laserSpeed);
-		//rb.velocity =(transform.right * laserSpeed);
-
-
-		//bullet.velocity =(transform.right * laserSpeed);
-
-
-		//bullet.AddForce(bullet.transform.forward *6000); 
-		//rb.AddForce(bullet.transform.forward *6000); 
-		/*GameObject player = GameObject.FindWithTag("Player");
-			//Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
-			//GameObject obj = (GameObject)Instantiate(rb.gameObject, new Vector3(200,-200,300), transform.rotation);
-			float perBulletAngle = spreadAngle / (amt - 1);
-			float startAngle = spreadAngle * -0.5f;
-			for (int i = 0; i <amt; i++)
-			{
-				GameObject obj = (GameObject)Instantiate(rb.gameObject, player.transform.position, transform.rotation);
-				obj.transform.Rotate(Vector3.forward, startAngle + i * perBulletAngle);
-				obj.GetComponent<Rigidbody2D>().AddForce(obj.GetComponent<Rigidbody2D>().transform.forward *6000); 
-			}
-			go = false;
-			//Debug.LogError ("2");
-		//}
-		//rb.velocity = (transform.right * laserSpeed);
-		/*for (int i = 0; i < rbarray.Length; i++) {
-			if (rbarray [i] != null) {
-				rbarray [i].MovePosition (new Vector2 (0, 5*i));
-				rbarray[i].velocity = (transform.right * laserSpeed);
-			}
-		}
-	}*/
+		
 	}
 
 	void OnBecomeInvisible()
@@ -156,6 +116,7 @@ public class FinalGambit2 : MonoBehaviour {
 			obj.GetComponent<BoxCollider2D> ().isTrigger = true;
 			obj.GetComponent<BoxCollider2D> ().size = new Vector2 (0.5f, 0.5f);
 			obj.AddComponent<Shot_gambit> ();
+			obj.GetComponent<Shot_gambit> ().PrefabID = PrefabID;
 			//obj.GetComponent<Shot> ().laserSpeed = 600;
 
 
