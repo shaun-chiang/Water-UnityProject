@@ -511,9 +511,10 @@ public class WeaponScript : Photon.PunBehaviour
     [PunRPC]
     public void mageBoltStrikeRPC()
     {
-
-        var laserShotInstance = Instantiate(secondary2Prefab, transform.position, transform.rotation) as Rigidbody2D;
+        Transform g = transform.Find("FireballSpawn");
+        var laserShotInstance = Instantiate(secondary2Prefab, g.position, transform.rotation) as Rigidbody2D;
         laserShotInstance.gameObject.GetComponent<BoltStrike>().PrefabID = gameObject.GetInstanceID();
+        laserShotInstance.transform.parent = transform;
     }
     //Blizzard
 
@@ -521,7 +522,7 @@ public class WeaponScript : Photon.PunBehaviour
     {
         if (coolDownperBZ <= 0)
         {
-            if (BZcount > 0 && cooldownFG <= 0f)
+            if (BZcount > 0 && cooldownBZ <= 0f)
             {
                 coolDownperBZ += rofperBZ;
                 BZcount -= 1;
@@ -533,7 +534,11 @@ public class WeaponScript : Photon.PunBehaviour
                     BZcount = 3;
                 }
                 GetComponent<Animator>().SetTrigger("attack");
-                GetComponent<PhotonView>().RPC("mageBlizzardRPC", PhotonTargets.AllViaServer);
+                for (int i = 0; i < 6; i++)
+                {
+                    GetComponent<PhotonView>().RPC("mageBlizzardRPC", PhotonTargets.AllViaServer);
+                }
+            
             }
         }
     }
@@ -541,7 +546,7 @@ public class WeaponScript : Photon.PunBehaviour
     public void mageBlizzardRPC()
     {
         var laserShotInstance = Instantiate(secondary3Prefab, transform.position, transform.rotation) as Rigidbody2D;
-        laserShotInstance.gameObject.GetComponent<Blizzard>().PrefabID = gameObject.GetInstanceID();
+        laserShotInstance.gameObject.GetComponent<Shot_blizzard>().PrefabID = gameObject.GetInstanceID();
 
     }
 

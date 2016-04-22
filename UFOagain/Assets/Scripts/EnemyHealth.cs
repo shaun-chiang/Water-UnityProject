@@ -60,7 +60,7 @@ public class EnemyHealth : MonoBehaviour {
             var force = 50;
 
             Damage(shot.dmg, otherCollider.gameObject.GetComponent<Rigidbody2D>().velocity * force);
-            //Destroy(shot.gameObject);
+            
         }
 
         HealthScript hs = otherCollider.GetComponent<HealthScript>();

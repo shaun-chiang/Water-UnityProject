@@ -6,7 +6,7 @@ using System.Collections;
 public class Shot_gambit : MonoBehaviour
 {
     public int PrefabID;
-    private int laserSpeed = 15;
+    public float laserSpeed = 15;
     private int dmg = 10;
     Vector3 dir;
     public bool isEnemy = false;
@@ -59,12 +59,13 @@ public class Shot_gambit : MonoBehaviour
 		}*/
         else {
             Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), otherCollider);
-            if (PrefabID != otherCollider.gameObject.GetInstanceID())
+            if (PrefabID != otherCollider.gameObject.GetInstanceID() && PrefabID != 0)
             {
+               // Debug.Log("Prefab id: " + PrefabID + "   othercolliderid: " + otherCollider.gameObject.GetInstanceID());
                 HealthScript hs = otherCollider.gameObject.GetComponent<HealthScript>();
                 if (hs != null)
                 {
-
+                    Debug.Log("SELF HURRRTT");
                     hs.AdjustHealth(dmg * -1);
                 }
 

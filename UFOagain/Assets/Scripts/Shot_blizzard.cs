@@ -7,7 +7,7 @@ public class Shot_blizzard : MonoBehaviour
 {
     public int PrefabID;
     private float laserSpeed = 1;
-    private int dmg = 10;
+    public int dmg = 10;
     Vector3 dir;
     public bool isEnemy = false;
     private int id = 0;
@@ -16,12 +16,15 @@ public class Shot_blizzard : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        this.gameObject.AddComponent<BoxCollider2D>();
-
-        this.GetComponent<BoxCollider2D>().isTrigger = true;
-
+        if (GetComponent<Collider2D>() == null)
+        {
+            Debug.Log("Circle collider being added to blizzard");
+            CircleCollider2D cir = gameObject.AddComponent<CircleCollider2D>();
+            cir.isTrigger = true;
+            cir.radius = 0.39f;
+        }
         rb = this.GetComponent<Rigidbody2D>();
-        rb.transform.position = new Vector3(transform.position.x + Random.Range(-2f, 2f), transform.position.y + Random.Range(-2f, 2f));
+        
         //transform.Rotate(new Vector3(0, 0, -90));
         Destroy(gameObject, 3);
 
@@ -35,8 +38,22 @@ public class Shot_blizzard : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = (transform.right * laserSpeed);
-        laserSpeed += 0.1f;
+        //rb.velocity = (transform.right * laserSpeed);
+        //laserSpeed += 0.1f;
+        rb.transform.position = new Vector3(transform.position.x + Random.Range(-0.5f, 0.5f), transform.position.y + Random.Range(-0.5f, 0.5f));
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 0.19f);
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
+
+            EnemyHealth escript = hitColliders[i].gameObject.GetComponent<EnemyHealth>();
+
+            if (escript != null)
+            {
+                Debug.Log("dmg: " + dmg);
+                escript.Damage(dmg, new Vector2(1, 1));
+            }
+            //rb.AddForce(new Vector2(Random.Range(-0.5f, 0.5f), transform.position.y), ForceMode2D.Impulse);
+        }
     }
 
     void OnBecomeInvisible()
@@ -53,6 +70,7 @@ public class Shot_blizzard : MonoBehaviour
     {
         //if (otherCollider.gameObject.tag == "Player") {
         Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), otherCollider.GetComponent<Collider2D>());
+        
 
 
         //}
@@ -61,14 +79,14 @@ public class Shot_blizzard : MonoBehaviour
         {
 
             //Physics2D.IgnoreCollision (this.GetComponent<BoxCollider2D> (),otherCollider.GetComponent<BoxCollider2D> ());
-            GetComponent<Animator>().SetBool("isSuccessfulhit", true);
+            //GetComponent<Animator>().SetBool("isSuccessfulhit", true);
             if (otherCollider.gameObject.tag == "Enemy")
             {
 
                 EnemyHealth escript = otherCollider.gameObject.GetComponent<EnemyHealth>();
 
-
-                escript.Damage(dmg, new Vector2(3, 3));
+                Debug.Log("Triggeringingingignigng");
+                escript.Damage(dmg, new Vector2(0, 0));
 
             }
             else {
