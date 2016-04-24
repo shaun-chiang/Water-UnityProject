@@ -12,14 +12,14 @@ public class WallTrigger : MonoBehaviour {
 	void Update () {
 	
 	}
-    /*
+    
     void OnTriggerEnter2D(Collider2D otherCollider)
     {
-        Shot shot = otherCollider.gameObject.GetComponent<Shot>();
+        ExplosiveCharge shot = otherCollider.gameObject.GetComponent<ExplosiveCharge>();
         if (shot != null)
         {
-            Destroy(shot.gameObject);
+            shot.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
         }
 
-    } */
+    } 
 }

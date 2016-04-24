@@ -28,7 +28,7 @@ public class Blizzard: MonoBehaviour {
 		//go = false;
 		transform.Rotate(new Vector3(0, 0, -90));
 		//rb.transform.position = new Vector3 (transform.position.x, transform.position.y + 2.5f);
-		fireInstantiate ();
+		//fireInstantiate ();
 		//StartCoroutine (sleepy());
 
 		//go = true;
@@ -72,9 +72,32 @@ public class Blizzard: MonoBehaviour {
 	{
 		//if (otherCollider.gameObject.tag == "Player") {
 			Physics2D.IgnoreCollision (this.GetComponent<BoxCollider2D> (), otherCollider.GetComponent<BoxCollider2D> ());
-		
 
-		laserSpeed = 0;
+        if (otherCollider.gameObject.tag == "Enemy")
+        {
+
+            EnemyHealth escript = otherCollider.gameObject.GetComponent<EnemyHealth>();
+
+            Debug.Log("Triggeringingingignigng");
+            escript.Damage(dmg, new Vector2(3, 3));
+
+        }
+        else {
+
+            if (PrefabID != otherCollider.gameObject.GetInstanceID())
+            {
+                HealthScript hs = otherCollider.gameObject.GetComponent<HealthScript>();
+                if (hs != null)
+                {
+
+                    hs.AdjustHealth(dmg * -1);
+                }
+
+
+            }
+        }
+
+        laserSpeed = 0;
 		StartCoroutine(shotwait());
 		//Destroy(shot.gameObject);
 

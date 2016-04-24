@@ -108,19 +108,34 @@ public class FinalGambit2 : MonoBehaviour {
 		float startAngle = spreadAngle * -0.5f;
 
 		for (int i = 0; i < amt; i++) {
-			GameObject obj = (GameObject)Instantiate (rb.gameObject, transform.position, transform.rotation);
-			obj.transform.Rotate (Vector3.forward, startAngle + i * perBulletAngle);
-			Destroy (obj.GetComponent<FinalGambit2> ());
+            GameObject obj;
+            if (PlayerPrefs.GetString("Class").Equals("Mage"))
+            {
+                Vector3 vec = new Vector3(transform.position.x + Random.Range(-2f, 2f), transform.position.y + Random.Range(-2f, 2f), transform.position.z);
+                obj =  (GameObject)Instantiate(rb.gameObject, vec, transform.rotation);
+            }
+            else
+            {
+                obj = (GameObject)Instantiate(rb.gameObject, transform.position, transform.rotation);
+                obj.transform.Rotate(Vector3.forward, startAngle + i * perBulletAngle);
+                
+            }
+            Destroy(obj.GetComponent<FinalGambit2>());
 
-			obj.AddComponent<BoxCollider2D> ();
+            obj.AddComponent<BoxCollider2D> ();
 			obj.GetComponent<BoxCollider2D> ().isTrigger = true;
 			obj.GetComponent<BoxCollider2D> ().size = new Vector2 (0.5f, 0.5f);
 			obj.AddComponent<Shot_gambit> ();
 			obj.GetComponent<Shot_gambit> ().PrefabID = PrefabID;
-			//obj.GetComponent<Shot> ().laserSpeed = 600;
+            if (PlayerPrefs.GetString("Class").Equals("Mage"))
+            {
+                obj.GetComponent<Shot_gambit>().laserSpeed = 3 * Random.Range(-3f, 3f);
+            }
+                
+            //obj.GetComponent<Shot> ().laserSpeed = 600;
 
 
-		}
+        }
 
 
 

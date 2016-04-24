@@ -25,11 +25,12 @@ public class ExplosiveCharge : MonoBehaviour
         sounds = GetComponents<AudioSource>();
         audio1 = sounds[0];
         audio2 = sounds[1];
+        StartCoroutine(shotwait());
     }
 
     void FixedUpdate()
     {
-        StartCoroutine(shotwait());
+        
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -75,19 +76,20 @@ public class ExplosiveCharge : MonoBehaviour
         //foreach(GameObject enemy in enemies) {
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(center, blastRadius);
 
-        foreach (Collider2D enemy in hitColliders)
+        for (int i = 0; i < hitColliders.Length; i++)
         {
 
-            EnemyHealth escript = enemy.gameObject.GetComponent<EnemyHealth>();
+            EnemyHealth escript = hitColliders[i].gameObject.GetComponent<EnemyHealth>();
 
             if (escript != null)
             {
+                Debug.Log("dmg: " + dmg);
                 escript.Damage(dmg, new Vector2(1, 1));
             }
 
-            if (PrefabID != enemy.gameObject.GetInstanceID())
+            if (PrefabID != hitColliders[i].gameObject.GetInstanceID())
             {
-                HealthScript hs = enemy.gameObject.GetComponent<HealthScript>();
+                HealthScript hs = hitColliders[i].gameObject.GetComponent<HealthScript>();
                 if (hs != null)
                 {
 
@@ -96,6 +98,8 @@ public class ExplosiveCharge : MonoBehaviour
 
 
             }
+
+           
 
         }
 

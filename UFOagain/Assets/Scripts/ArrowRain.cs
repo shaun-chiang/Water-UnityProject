@@ -25,20 +25,21 @@ public class ArrowRain : MonoBehaviour {
 		transform.Rotate(new Vector3(0, 0, -90));
 		//rb.velocity = (transform.right * 2);
 		GetComponent<Animator> ().Play ("ArrowRainAnim");
-		/*for (int i = 0; i <= 5; i++) {
+        radialAoe(this.GetComponent<CircleCollider2D>());
+        /*for (int i = 0; i <= 5; i++) {
 			//rb.MovePosition (Random.insideUnitCircle * 1);
 			anim = GetComponent<Animator> ();
 			anim.bodyPosition = (Random.insideUnitCircle * 10);
 			anim.Play ("ArrowRainAnim");
 		}*/
 
-		//GetComponent<Animator> ().SetBool ("isSuccessfulhit", true);
-		//radialAoe (this.GetComponent<CircleCollider2D> ());
-	}
+        //GetComponent<Animator> ().SetBool ("isSuccessfulhit", true);
+        //radialAoe (this.GetComponent<CircleCollider2D> ());
+    }
 
 
 	void Update(){
-		radialAoe (this.GetComponent<CircleCollider2D> ());
+		
 
 	}
 	void FixedUpdate ()

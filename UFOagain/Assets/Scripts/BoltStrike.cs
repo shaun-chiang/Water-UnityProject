@@ -24,7 +24,11 @@ public class BoltStrike : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+        if (transform.parent != null)
+        {
+            var rotation = transform.parent.rotation * Quaternion.Euler(0, 0, -90);
+            transform.rotation = rotation;
+        }
 	}
 
 	void FixedUpdate()
@@ -52,14 +56,10 @@ public class BoltStrike : MonoBehaviour {
 		WeaponScript ws = otherCollider.GetComponent<WeaponScript>();
 		if (ws != null) {
 			otherCollider.gameObject.AddComponent<HingeJoint2D> ().connectedBody = rb;
-			//otherCollider.GetComponent<HingeJoint2D> ().anchor = new Vector2 (transform.position.x + 5f, transform.position.y);
-			//rb.transform.SetParent (otherCollider.transform);
-			//transform.root.parent = otherCollider.transform;
+			
 			Debug.LogError (otherCollider);
 			GetComponent<Animator> ().SetBool ("isSuccessfulhit", true);
-			//laserSpeed--;
-			//Destroy(GetComponent<Collider2D>(),casttime);
-			//shot.enabled = false;
+			
 			
 			
 			//Destroy(shot.gameObject);
