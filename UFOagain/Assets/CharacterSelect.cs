@@ -89,7 +89,7 @@ public class CharacterSelect : MonoBehaviour {
         if (GUI.Button(new Rect(13, 170, 100, 25), "Select"))
         {
             PlayerPrefs.SetString("Class", "Archer");
-            PlayerPrefs.SetInt("AHP", 100);
+            PlayerPrefs.SetInt("HP", 100);
            
             EnterRoom();
 
@@ -126,7 +126,7 @@ public class CharacterSelect : MonoBehaviour {
 		if (GUI.Button(new Rect(118, 170, 100, 25) ,(magebutton)))
         {
             PlayerPrefs.SetString("Class", "Mage");
-            PlayerPrefs.SetInt("MHP", 75);
+            PlayerPrefs.SetInt("HP", 75);
             EnterRoom();
         }
         //paladin
@@ -159,7 +159,7 @@ public class CharacterSelect : MonoBehaviour {
 		{
 
             PlayerPrefs.SetString("Class", "Paladin");
-            PlayerPrefs.SetInt("PHP", 125);
+            PlayerPrefs.SetInt("HP", 125);
 
             EnterRoom();
         }
@@ -192,7 +192,7 @@ public class CharacterSelect : MonoBehaviour {
 		if (GUI.Button(new Rect(329, 170, 100, 25) ,(gunnerbutton)))
 		{
             PlayerPrefs.SetString("Class", "Gunner");
-            PlayerPrefs.SetInt("GHP", 75);
+            PlayerPrefs.SetInt("HP", 75);
             EnterRoom();
         }
 		GUILayout.EndArea();

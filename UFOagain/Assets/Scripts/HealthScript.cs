@@ -31,21 +31,21 @@ public class HealthScript : MonoBehaviour
         
         if (gameObject.name.StartsWith("Paladin"))
         {
-            currHp = PlayerPrefs.GetInt("PHP");
+            currHp = PlayerPrefs.GetInt("HP");
             maxHp = 125;
         } else if (gameObject.name.StartsWith("Mage"))
         {
-            currHp = PlayerPrefs.GetInt("MHP");
+            currHp = PlayerPrefs.GetInt("HP");
             maxHp = 75;
         }
         else if (gameObject.name.StartsWith("Gunner"))
         {
-            currHp = PlayerPrefs.GetInt("GHP");
+            currHp = PlayerPrefs.GetInt("HP");
             maxHp = 75;
         }
         else if (gameObject.name.StartsWith("Archer"))
         {
-            currHp = PlayerPrefs.GetInt("AHP");
+            currHp = PlayerPrefs.GetInt("HP");
             maxHp = 100;
         }
         pView = GetComponent<PhotonView>();
@@ -65,22 +65,9 @@ public class HealthScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.name.StartsWith("Paladin"))
-        {
-            currHp = PlayerPrefs.GetInt("PHP");
-        }
-        else if (gameObject.name.StartsWith("Mage"))
-        {
-            currHp = PlayerPrefs.GetInt("MHP");
-        }
-        else if (gameObject.name.StartsWith("Gunner"))
-        {
-            currHp = PlayerPrefs.GetInt("GHP");
-        }
-        else if (gameObject.name.StartsWith("Archer"))
-        {
-            currHp = PlayerPrefs.GetInt("AHP");
-        }
+        
+        currHp = PlayerPrefs.GetInt("HP");
+        
 
         UpdateHealthBar();
 
@@ -111,79 +98,41 @@ public class HealthScript : MonoBehaviour
 
     public void AdjustHealth(int healthChange)
     {
-        playerRecovery = playerRecoveryNo;
-        newHp = currHp + healthChange;
-        if (gameObject.name.StartsWith("Paladin"))
+        if (pView.isMine)
         {
-            PlayerPrefs.SetInt("PHP",newHp);
-        }
-        else if (gameObject.name.StartsWith("Mage"))
-        {
-            PlayerPrefs.SetInt("MHP", newHp);
-        }
-        else if (gameObject.name.StartsWith("Gunner"))
-        {
-            PlayerPrefs.SetInt("GHP", newHp);
-        }
-        else if (gameObject.name.StartsWith("Archer"))
-        {
-            PlayerPrefs.SetInt("AHP", newHp);
-        }
+            playerRecovery = playerRecoveryNo;
+            newHp = currHp + healthChange;
 
-        if (currHp > maxHp)
-        {
-            newHp = maxHp;
-            if (gameObject.name.StartsWith("Paladin"))
-            {
-                PlayerPrefs.SetInt("PHP", newHp);
-            }
-            else if (gameObject.name.StartsWith("Mage"))
-            {
-                PlayerPrefs.SetInt("MHP", newHp);
-            }
-            else if (gameObject.name.StartsWith("Gunner"))
-            {
-                PlayerPrefs.SetInt("GHP", newHp);
-            }
-            else if (gameObject.name.StartsWith("Archer"))
-            {
-                PlayerPrefs.SetInt("AHP", newHp);
-            }
-            
-        }
-        else if (currHp <= 0)
-        {
-            newHp = 0;
-            if (gameObject.name.StartsWith("Paladin"))
-            {
-                PlayerPrefs.SetInt("PHP", newHp);
-            }
-            else if (gameObject.name.StartsWith("Mage"))
-            {
-                PlayerPrefs.SetInt("MHP", newHp);
-            }
-            else if (gameObject.name.StartsWith("Gunner"))
-            {
-                PlayerPrefs.SetInt("GHP", newHp);
-            }
-            else if (gameObject.name.StartsWith("Archer"))
-            {
-                PlayerPrefs.SetInt("AHP", newHp);
-            }
-            
-            Destroy(gameObject.GetComponent<Collider2D>());
-            GetComponent<Animator>().SetBool("isDead", true);
-            Destroy(gameObject.GetComponent<PlayerController>());
-            //PhotonNetwork.LoadLevel("GameOver");
-            StartCoroutine(wait());
-        }
-        else
-        {
-            isInvin = true;
-            StartCoroutine(flash());
-        }
+            PlayerPrefs.SetInt("HP", newHp);
 
-        UpdateHealthBar();
+            if (currHp > maxHp)
+            {
+                newHp = maxHp;
+
+                PlayerPrefs.SetInt("HP", newHp);
+
+
+            }
+            else if (currHp <= 0)
+            {
+                newHp = 0;
+
+                PlayerPrefs.SetInt("HP", newHp);
+
+                Destroy(gameObject.GetComponent<Collider2D>());
+                GetComponent<Animator>().SetBool("isDead", true);
+                Destroy(gameObject.GetComponent<PlayerController>());
+                //PhotonNetwork.LoadLevel("GameOver");
+                StartCoroutine(wait());
+            }
+            else
+            {
+                isInvin = true;
+                StartCoroutine(flash());
+            }
+
+            UpdateHealthBar();
+        }
     }
 
     void UpdateHealthBar()

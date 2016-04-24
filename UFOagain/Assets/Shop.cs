@@ -49,19 +49,9 @@ public class Shop : MonoBehaviour {
         GUILayout.EndHorizontal();
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        if (PlayerPrefs.GetString("Class").Equals("Archer"))
-        {
-            GUILayout.Label("Current Gold :" + PhotonNetwork.player.GetScore() + " Current Health : " + PlayerPrefs.GetInt("AHP"), GUI.skin.FindStyle("PlainText"));
-        } else if (PlayerPrefs.GetString("Class").Equals("Gunner"))
-            {
-                GUILayout.Label("Current Gold :" + PhotonNetwork.player.GetScore() + " Current Health : " + PlayerPrefs.GetInt("GHP"), GUI.skin.FindStyle("PlainText"));
-            } else if (PlayerPrefs.GetString("Class").Equals("Paladin"))
-        {
-            GUILayout.Label("Current Gold :" + PhotonNetwork.player.GetScore() + " Current Health : " + PlayerPrefs.GetInt("PHP"), GUI.skin.FindStyle("PlainText"));
-        } else if (PlayerPrefs.GetString("Class").Equals("Mage"))
-        {
-            GUILayout.Label("Current Gold :" + PhotonNetwork.player.GetScore() + " Current Health : " + PlayerPrefs.GetInt("MHP"), GUI.skin.FindStyle("PlainText"));
-        }
+        
+        GUILayout.Label("Current Gold :" + PhotonNetwork.player.GetScore() + " Current Health : " + PlayerPrefs.GetInt("HP"), GUI.skin.FindStyle("PlainText"));
+        
         GUILayout.FlexibleSpace();
         GUILayout.EndHorizontal();
         GUILayout.BeginHorizontal();
